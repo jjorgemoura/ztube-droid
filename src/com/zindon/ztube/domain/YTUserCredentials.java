@@ -1,9 +1,12 @@
 package com.zindon.ztube.domain;
 
-import java.util.List;
 
 /**
  * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version %I%, %G%
+ * @since API 1
  */
 public class YTUserCredentials {
 
@@ -12,6 +15,8 @@ public class YTUserCredentials {
 
     private String username = null;
     private String password = null;
+    
+    private String email = null;
 
 
 
@@ -26,6 +31,10 @@ public class YTUserCredentials {
 
 
 
+	
+
+
+
     //-----------------Static Methods------------------
 
 
@@ -34,8 +43,15 @@ public class YTUserCredentials {
 
 
     //-----------------Public Methods------------------
+    public void login() {
+    	
+    	
+    }
 
-
+    public void logout() {
+    	
+    	
+    }
 
 
 
@@ -50,6 +66,29 @@ public class YTUserCredentials {
 
 
     //-----------------Getters and Setters------------------
+    /**
+     * 
+     * @return
+     */
+    public String getUsername() {
+		return username;
+	}
 
+    /**
+     * 
+     * @return
+     */
+	public String getPassword() {
+		return password;
+	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+    
 }

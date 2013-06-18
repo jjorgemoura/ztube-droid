@@ -2,6 +2,10 @@ package com.zindon.ztube.domain;
 
 /**
  * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version %I%, %G%
+ * @since API 1
  */
 public class YTVideo {
 

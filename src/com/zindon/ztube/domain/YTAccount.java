@@ -4,6 +4,10 @@ import java.util.List;
 
 /**
  * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version %I%, %G%
+ * @since API 1
  */
 public class YTAccount {
 
@@ -11,7 +15,6 @@ public class YTAccount {
 
 
     private YTUserCredentials mUserCredentials = null;
-
 
     private List<YTPlaylist> mYTPlaylistsList = null;
 
@@ -37,6 +40,14 @@ public class YTAccount {
 
     //-----------------Public Methods------------------
 
+    public void myPlaylists() {
+    	
+    	
+    	
+    	
+    }
+    
+    
 
 
 
