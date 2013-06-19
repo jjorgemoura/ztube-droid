@@ -31,7 +31,7 @@ public class YTUserCredentials implements Persistable {
      * 
      * @param username
      */
-    public YTUserCredentials(String username) {
+    public YTUserCredentials(String username, Object dbManager) {
 
         this.mUsername = username;
 
@@ -41,10 +41,8 @@ public class YTUserCredentials implements Persistable {
      * 
      * @param dbobj
      */
-    public YTUserCredentials(Object dbobj) {
-
-        this.mUsername = "zsd";
-
+    public YTUserCredentials(Object dbobj, Object dbManager) {
+        
         this.entityToDomainObject();
     }
 
@@ -55,7 +53,24 @@ public class YTUserCredentials implements Persistable {
 
 
     //-----------------Static Methods------------------
+    /**
+     * 
+     * @param id
+     * @param dbManager
+     * @return
+     */
+    public static YTUserCredentials retrive(long id, Object dbManager) {
 
+    	YTUserCredentials result = null;
+
+        //load from DB
+        //
+    	
+    	//
+
+
+        return result;
+    } 
 
 
 
@@ -88,7 +103,7 @@ public class YTUserCredentials implements Persistable {
 	
 	
 	
-	
+	//--------------------------------
     public void login() {
     	
     	
@@ -99,16 +114,21 @@ public class YTUserCredentials implements Persistable {
     	
     }
 
-
+    public boolean isLogon() {
+    	
+    	boolean result = true;
+    	
+    	
+    	return result;
+    }
 
 
 
     //-----------------Private------------------
     private void entityToDomainObject() {
     	
-    	
-    	
-    	
+    	this.mUsername = "zsd";
+    	this.mEmail = "";
     }
 
 
@@ -125,14 +145,7 @@ public class YTUserCredentials implements Persistable {
 		return mUsername;
 	}
 
-    /**
-     * 
-     * @return
-     */
-	public String getPassword() {
-		return mPassword;
-	}
-
+   
 	/**
 	 * 
 	 * @return

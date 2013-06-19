@@ -1,24 +1,28 @@
 package com.zindon.ztube.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.zindon.ztube.domain.interfaces.Persistable;
+import com.zindon.ztube.utils.ZDDate;
 
 public class YTHistoryVideo extends YTVideo implements Persistable {
 
 	private static final String TAG = "YTHistoryVideo";
 
 
-    
+	private ZDDate mLastDatePlayed = null;
 
 
 
     //-----------------Constructors------------------
-    public YTHistoryVideo() {
+    public YTHistoryVideo(Object dbManager) {
 		
 
 
     }
 
-    public YTHistoryVideo(Object dbobj) {
+    public YTHistoryVideo(Object dbobj, Object dbManager) {
 		
 
     	this.entityToDomainObject();
@@ -27,7 +31,16 @@ public class YTHistoryVideo extends YTVideo implements Persistable {
 
 
     //-----------------Static Methods------------------
+    public static List<YTHistoryVideo> findAll(Object dbManager) {
 
+        List<YTHistoryVideo> resultList = new ArrayList<YTHistoryVideo>(25);
+        YTHistoryVideo historyVideo = null;
+
+        //Load DB
+
+
+        return resultList;
+    }
 
 
 

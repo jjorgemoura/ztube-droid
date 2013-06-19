@@ -1,6 +1,7 @@
 package com.zindon.ztube.domain;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jorge on 6/17/13.
@@ -16,8 +17,8 @@ public class YTAccount {
 
     private YTUserCredentials mUserCredentials = null;
 
-    private List<YTPlaylist> mPlaylistsList = null;
-    private List<YTHistoryVideo> mHistoryVideos = null;
+    private Map<Integer, YTPlaylist> mPlaylistsList = null;
+    private Map<Integer, YTHistoryVideo> mHistoryVideos = null;
 
 
 
@@ -27,6 +28,8 @@ public class YTAccount {
 
         this.mUserCredentials = userCredentials;
 
+        this.mHistoryVideos = new HashMap<Integer, YTHistoryVideo>();
+        this.mPlaylistsList = new HashMap<Integer, YTPlaylist>();		
     }
 
 
@@ -40,6 +43,19 @@ public class YTAccount {
 
 
     //-----------------Public Methods------------------
+    
+    public void doSearchVideos(String searchText) {
+    	
+    	//make the search
+    	
+    	
+    	//store results in temp to allow pagination
+    	
+    	
+    	
+    } 
+    
+    
 
     public void myPlaylists() {
     	
@@ -49,14 +65,40 @@ public class YTAccount {
     }
     
     
+    public void myHistoryVideos() {
+    	
+    	if(this.mHistoryVideos.isEmpty()) {
+    		
+    		this.lazyLoadHistoryVideos();
+    	}
+    	
+    	
+    	//return list
+    	
+    }
 
 
 
+    
+    /**
+     * 
+     * @return
+     */
+    public YTUserCredentials userInfo() {
+    	    	
+    	return this.mUserCredentials;
+    }
 
 
 
     //-----------------Private------------------
-
+    private void lazyLoadHistoryVideos() {
+        
+        //from DB
+    	
+    	
+    	
+    }
 
 
 
