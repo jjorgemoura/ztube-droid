@@ -4,8 +4,20 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+
+
+/**
+ * 
+ * @author jorge
+ *
+ */
 public class MainActivity extends Activity {
 
+	private static final String TAG = "MainActivity";
+	
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,4 +31,8 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	
+	
+	
+	
 }

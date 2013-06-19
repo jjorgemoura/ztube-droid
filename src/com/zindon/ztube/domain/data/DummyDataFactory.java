@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.zindon.ztube.domain.YTAccount;
+import com.zindon.ztube.domain.YTHistoryVideo;
 import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTVideo;
 
@@ -20,9 +21,10 @@ import com.zindon.ztube.domain.YTVideo;
 public class DummyDataFactory {
 
 	
-	private static Map<Integer, YTAccount> accountsList = null;
-	private static Map<Integer, YTPlaylist> playlistsList = null;
-	private static Map<Integer, YTVideo> videosList = null;
+	private static Map<Integer, YTAccount> sAccountsList = null;
+	private static Map<Integer, YTPlaylist> sPlaylistsList = null;
+	private static Map<Integer, YTVideo> sVideosList = null;
+	private static Map<Integer, YTHistoryVideo> sVideosHistoryList = null;
 	
 	
 	
@@ -35,10 +37,10 @@ public class DummyDataFactory {
 	
 	static {
 		
-		accountsList = new HashMap<Integer, YTAccount>();
-		playlistsList = new HashMap<Integer, YTPlaylist>();
-		videosList = new HashMap<Integer, YTVideo>();
-		
+		sAccountsList = new HashMap<Integer, YTAccount>();
+		sPlaylistsList = new HashMap<Integer, YTPlaylist>();
+		sVideosList = new HashMap<Integer, YTVideo>();
+		sVideosHistoryList = new HashMap<Integer, YTHistoryVideo>();
 		
 		//accountsList.put(1, "jorge");
 		//accountsList.put(2, "toni");

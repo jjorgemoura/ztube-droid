@@ -12,10 +12,10 @@ public class YTVideo {
     private static final String TAG = "YTVideo";
 
 
-    private String title = null;
-    private String description = null;
-    private String author = null;
-    private int durationInSeconds = 0;
+    private String mTitle = null;
+    private String mDescription = null;
+    private String mAuthor = null;
+    private int mDurationInSeconds = 0;
 
 
 

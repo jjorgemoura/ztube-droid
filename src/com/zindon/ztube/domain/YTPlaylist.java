@@ -15,11 +15,11 @@ public class YTPlaylist {
     private static final String TAG = "YTPlaylist";
 
 
-    private int plIdentifier = 0;
-    private String name = null;
-    private String description = null;
+    private int mPlaylistIdentifier = 0;
+    private String mName = null;
+    private String mDescription = null;
 
-    private List<YTVideo> videosList = null;
+    private List<YTVideo> mVideosList = null;
 
 
 
@@ -28,7 +28,7 @@ public class YTPlaylist {
     //-----------------Constructors------------------
     public YTPlaylist() {
 
-        videosList = new ArrayList<YTVideo>();
+        mVideosList = new ArrayList<YTVideo>();
     }
 
 

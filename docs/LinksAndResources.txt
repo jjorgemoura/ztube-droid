@@ -7,4 +7,33 @@ http://www.oracle.com/technetwork/java/javase/documentation/index-137483.html
 http://mobile.tutsplus.com/tutorials/android/javadoc/
 
 
+Code Conventions
+http://source.android.com/source/code-style.html
+
+
+UI Patterns
+http://developer.android.com/design/patterns/index.html
+http://designmodo.github.io/Flat-UI/
+http://www.androiduipatterns.com/
+http://android.inspired-ui.com/
+http://www.androidpatterns.com/
+http://techcyclo.com/best-example-android-ui-design/
+http://www.creativebloq.com/app-design/15-beautiful-android-app-ui-designs-11121271
+
+
+http://designhash.com/best-mobile-ui-design-patterns-sites/
+
+
+
+Color
+http://www.pantone.com/pages/colorstrology/colorstrology.aspx?from=hpmodule
+http://www.pantone.com/pages/index.aspx?pg=21055
+http://www.redoitdesign.com/2012/09/05/sneak-peek-pantone-colors-2014/
+
+
+
+DB Management
+
+
+
 

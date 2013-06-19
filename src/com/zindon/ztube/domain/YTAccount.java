@@ -16,7 +16,8 @@ public class YTAccount {
 
     private YTUserCredentials mUserCredentials = null;
 
-    private List<YTPlaylist> mYTPlaylistsList = null;
+    private List<YTPlaylist> mPlaylistsList = null;
+    private List<YTHistoryVideo> mHistoryVideos = null;
 
 
 
