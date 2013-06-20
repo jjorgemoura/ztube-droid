@@ -18,12 +18,14 @@ public class YTHistoryVideo extends YTVideo implements Persistable {
     //-----------------Constructors------------------
     public YTHistoryVideo(Object dbManager) {
 		
+    	super();
 
 
     }
 
     public YTHistoryVideo(Object dbobj, Object dbManager) {
 		
+    	super();
 
     	this.entityToDomainObject();
     }
