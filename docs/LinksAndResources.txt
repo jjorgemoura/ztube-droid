@@ -36,4 +36,17 @@ DB Management
 
 
 
+Activities
+http://developer.android.com/training/basics/activity-lifecycle/starting.html
+
+
+
+Splash Screen
+http://stackoverflow.com/questions/15452061/android-splash-screen
+http://myandroidsolutions.blogspot.pt/2012/06/android-simple-splash-screen.html
+
+
+
+Others Useful
+http://stackoverflow.com/questions/3208445/android-activities-vs-views
 

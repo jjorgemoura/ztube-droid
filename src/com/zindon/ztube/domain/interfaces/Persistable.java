@@ -2,6 +2,7 @@ package com.zindon.ztube.domain.interfaces;
 
 
 /**
+ * This Interface define the required methods necessary to persist data entities into the persistence layer.
  * 
  * @author jorge
  *
@@ -16,7 +17,7 @@ public interface Persistable {
     public void enablePersistance();
     
     /**
-     * 
+     * This method refresh the data from de database into the entity.
      */
     public void refresh();
     
@@ -27,7 +28,7 @@ public interface Persistable {
     public void update();
        
     /**
-     * 
+     * This method remove the entity data from the persistence layer. This will not remove data from the instance entity.
      */
     public void disablePersistance();
 }
