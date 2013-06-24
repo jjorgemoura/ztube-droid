@@ -16,5 +16,27 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+    
+    
+    <color name="zColorTurquoise">#1ABC9C</color>
+    <color name="zColorGreenSea">#16A085</color>
+    <color name="zColorEmerald">#2ECC71</color>
+    <color name="zColorNephritis">#27AE60</color>
+    <color name="zColorPeterRiver">#3498DB</color>
+    <color name="zColorBelizeHole">#2980B9</color>
+    <color name="zColorAmethyst">#9B59B6</color>
+    <color name="zColorWisteria">#8E44AD</color>
+    <color name="zColorWetAsphalt">#34495E</color>
+    <color name="zColorMidnightBlue">#2C3E50</color>
+	<color name="zColorSunFlower">#F1C40F</color>
+    <color name="zColorOrange">#F39C12</color>
+    <color name="zColorCarrot">#E67E22</color>
+    <color name="zColorPumpkin">#D35400</color>
+    <color name="zColorAlizarin">#E74C3C</color>
+    <color name="zColorPomegranate">#C0392B</color>
+    <color name="zColorClouds">#ECF0F1</color>
+    <color name="zColorSilver">#BDC3C7</color>
+    <color name="zColorConcrete">#95A5A6</color>
+    <color name="zColorAsbestos">#7F8C8D</color>
+    
 </resources>

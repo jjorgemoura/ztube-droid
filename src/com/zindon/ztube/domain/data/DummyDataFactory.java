@@ -24,20 +24,23 @@ import com.zindon.ztube.domain.YTVideo;
 public class DummyDataFactory {
 
 	
+	// ----------------------VARS---------------------
 	private static Map<String, YTAccount> sAccountsList = null;							//KEY: unique identifier; VALUE: The account
 	private static Map<String, Map<String, YTPlaylist>> sPlaylistsList = null;			//KEY: Account identifier; VALUE{KEY: Playlist identifier; VALUE: The Playlist}
 	private static Map<String, Map<String, YTVideo>> sVideosList = null;				//KEY: Playlist identifier; VALUE{KEY: Video identifier; VALUE: The Video}
 	private static Map<String, Map<String, YTHistoryVideo>> sVideosHistoryList = null;		//KEY: Account identifier; VALUE{KEY: Video identifier; VALUE: The Video}
 	
 	
+ 		
 	
-	
+	// ----------------------CONSTRUCTORS---------------------
 	public DummyDataFactory() {
 		
 		
 	}
 	
 	
+ 	// ----------------------STATIC METHODS---------------------
 	static {
 		
 		sAccountsList = new HashMap<String, YTAccount>();
@@ -220,4 +223,19 @@ public class DummyDataFactory {
 		
 		return result;
 	}
+	
+	
+
+	
+ 	// ----------------------PUBLIC METHODS - INTERFACE--------------------
+	 	
+	
+	// ----------------------PUBLIC METHODS - NORMAL---------------------
+	
+	// ----------------------PRIVATE METHODS---------------------
+	
+
+	// ----------------------GETTERS and SETTERS---------------------
+
+	
 }
