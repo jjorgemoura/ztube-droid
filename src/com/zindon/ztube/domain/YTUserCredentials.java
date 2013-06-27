@@ -18,7 +18,7 @@ public class YTUserCredentials implements Persistable {
     private Object mDbEntity = null;
     
 
-    private String mUsername = null;
+    private String mUserId = null;
     private String mPassword = null;
     
     private String mEmail = null;
@@ -31,9 +31,9 @@ public class YTUserCredentials implements Persistable {
      * 
      * @param username
      */
-    public YTUserCredentials(String username, Object dbManager) {
+    public YTUserCredentials(String userId, Object dbManager) {
 
-        this.mUsername = username;
+        this.mUserId = userId;
 
     }
 
@@ -127,7 +127,7 @@ public class YTUserCredentials implements Persistable {
     //-----------------Private------------------
     private void entityToDomainObject() {
     	
-    	this.mUsername = "zsd";
+    	this.mUserId = "zsd";
     	this.mEmail = "";
     }
 
@@ -142,7 +142,7 @@ public class YTUserCredentials implements Persistable {
      * @return
      */
     public String getUsername() {
-		return mUsername;
+		return mUserId;
 	}
 
    

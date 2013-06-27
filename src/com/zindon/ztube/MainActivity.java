@@ -41,6 +41,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		Log.d(TAG, "Resume SPLASH");
 		
 		
+		
+		
 		//Click Listeners
 		Button myButton_pl = (Button) findViewById(R.id.button_playlists);
 		myButton_pl.setOnClickListener(this);
@@ -59,6 +61,62 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
+	
+	
+	@Override
+	protected void onStart() {
+		
+		super.onStart();
+		Log.d(TAG, "method: onStart");
+		
+		
+		
+	}
+    
+	@Override
+    protected void onRestart() {
+		
+		super.onRestart();
+		Log.i(TAG, "method: onRestart");
+		
+//		Log.d(TAG, "Start SPLASH");
+//		startActivity(new Intent(this, SplashActivity.class));
+//		Log.d(TAG, "Resume SPLASH");
+//		
+	}
+
+	@Override
+    protected void onResume() {
+		
+		super.onResume();
+		Log.i(TAG, "method: onResume");
+	}
+
+	@Override
+    protected void onPause() {
+		
+		super.onPause();
+		Log.i(TAG, "method: onPause");
+	}
+
+	@Override
+    protected void onStop() {
+		
+		super.onStop();
+		Log.i(TAG, "method: onStop");
+	}
+
+	@Override
+    protected void onDestroy() {
+		
+		super.onDestroy();
+		Log.i(TAG, "method: onDestroy");
+	}
+	
+	
+	
+	
+	
 	
 	
 	//-----------Listeners-----------
@@ -96,9 +154,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 
 	// ----------------------GETTERS and SETTERS---------------------
-	
-	
-	
 	
 	
 	

@@ -47,6 +47,10 @@ http://myandroidsolutions.blogspot.pt/2012/06/android-simple-splash-screen.html
 
 
 
+App Context
+http://androidresearch.wordpress.com/2012/03/22/defining-global-variables-in-android/
+
+
 Others Useful
 http://stackoverflow.com/questions/3208445/android-activities-vs-views
 

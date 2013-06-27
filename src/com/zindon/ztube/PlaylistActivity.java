@@ -1,13 +1,30 @@
 package com.zindon.ztube;
 
-import android.app.Activity;
-import android.os.Bundle;
 
-public class PlaylistActivity extends Activity {
+import java.util.List;
+
+import com.zindon.ztube.application.YTApplication;
+import com.zindon.ztube.domain.YTPlaylist;
+import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class PlaylistActivity extends Activity implements OnItemClickListener {
 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Main Activity";
 	 		
+	private List<YTPlaylist> theItems = null;
+	
 	
 	// ----------------------CONSTRUCTORS---------------------
 
@@ -21,9 +38,64 @@ public class PlaylistActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playlists);
 		
-		//Click Listeners
+		Log.d(TAG, "Playlist: Create");
+		
+		//List View
+		theItems = YTPlaylist.findByUserId("acxpt1");
+		
+		//Instantiate the Base Adapter
+		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
+
+		
+		//Setup The ListView
+ 		ListView theListView = (ListView) findViewById(R.id.listView1);
+
+ 		//
+ 		//LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+ 		//theListView.addHeaderView(inflater.inflate(R.layout.list_header, null)); 
+ 		//theListView.addFooterView(inflater.inflate(R.layout.list_footer, null));
+ 		
+ 		//
+ 		theListView.setAdapter(playlistBaseAdapter);
+ 		theListView.setTextFilterEnabled(true);
+ 		theListView.setOnItemClickListener(this);
+ 		
+ 		
+ 		
 		
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	
+	
+	
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		
+		
+		Log.d(TAG, "POSITION: " + position);
+		
+		if(position > theItems.size()) {
+			
+			Log.d(TAG, "LOADING PRESSED...");
+			return;
+		}
+		
+		Context context = getApplicationContext(); 
+		YTApplication ytApp = (YTApplication)getApplication();
+		
+		CharSequence text = "CLICKED ON: " + theItems.get(position - 1);
+		Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT); toast.show();
+		
+	}
+	
 	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	

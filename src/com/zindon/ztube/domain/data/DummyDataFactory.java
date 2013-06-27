@@ -11,6 +11,7 @@ import com.zindon.ztube.domain.YTHistoryVideo;
 import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTUserCredentials;
 import com.zindon.ztube.domain.YTVideo;
+import com.zindon.ztube.utils.ZDDate;
 
 
 /**
@@ -49,6 +50,7 @@ public class DummyDataFactory {
 		sVideosHistoryList = new HashMap<String, Map<String,YTHistoryVideo>>();
 		
 		
+		
 		//ACCOUNTS LIST
 		YTUserCredentials userCredentials = new YTUserCredentials("jorge", null);
 		YTAccount acc1 = new YTAccount(userCredentials);
@@ -65,6 +67,15 @@ public class DummyDataFactory {
 		YTPlaylist pl1 = new YTPlaylist();
 		YTPlaylist pl2 = new YTPlaylist();
 		YTPlaylist pl3 = new YTPlaylist();
+		
+		pl1.setupPlaylist("plpf1sdf5", "Mao Morta Videos Playlist", "Lista com videos dos Mao Morta - A melhor banda Portuguesa.", "http://gdata.youtube.com/feeds/mobile/users/condorouro");
+		pl1.setupPlaylistSettings(2, new ZDDate(), new ZDDate());
+		
+		pl2.setupPlaylist("plhj64hgf", "Pink Floyd Videos Playlist", "Lista com videos dos Pink Floyd - A melhor banda de sempre.", "http://gdata.youtube.com/feeds/mobile/users/condorouro");
+		pl2.setupPlaylistSettings(3, new ZDDate(), new ZDDate());
+		
+		pl3.setupPlaylist("pldlg5eras", "The Mars Volta Videos Playlist", "Lista com videos dos Mars Volta - O melhor projecto musical.", "http://gdata.youtube.com/feeds/mobile/users/condorouro");
+		pl3.setupPlaylistSettings(5, new ZDDate(), new ZDDate());
 		
 		tempPlayList1.put("plpf1sdf5", pl1);
 		tempPlayList2.put("plhj64hgf", pl2);
@@ -85,6 +96,18 @@ public class DummyDataFactory {
 		YTVideo vd1 = new YTVideo();
 		YTVideo vd2 = new YTVideo();
 		YTVideo vd3 = new YTVideo();
+		
+		vd1.setupVideo("vdghjfghj", "O divino Marques", "Video da musica O Divino Marques.", "");
+		vd1.setupAuthor("fghfghfgh", "jorge", "");
+		vd1.setupVideoData(new ZDDate(), new ZDDate(), 600, 6346, 5000, 1);
+		
+		vd2.setupVideo("vd654fghf", "Money", "Video da musica Money.", "");
+		vd2.setupAuthor("fghfg345", "jorge", "");
+		vd2.setupVideoData(new ZDDate(), new ZDDate(), 400, 9346, 8000, 3);
+		
+		vd3.setupVideo("vdfgh6534", "Eriatarka", "Video da musica Eriatarka.", "");
+		vd3.setupAuthor("fghfg23899", "jorge", "");
+		vd3.setupVideoData(new ZDDate(), new ZDDate(), 500, 8346, 7000, 2);
 		
 		tempVideoList1.put("vdghjfghj", vd1);
 		tempVideoList2.put("vd654fghf", vd2);
@@ -139,8 +162,18 @@ public class DummyDataFactory {
 	 * @return
 	 */
 	public static List<YTPlaylist> dummyPlaylistsBySubscription(String accountID) {
-				
-		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>(DummyDataFactory.sPlaylistsList.get(accountID).values());
+		
+//		Map<String, YTPlaylist> xx = DummyDataFactory.sPlaylistsList.get(accountID);
+//		
+//		List<YTPlaylist> yy = (List<YTPlaylist>) xx.values();
+//		
+//		int ddd = yy.size();
+//		
+//		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>(DummyDataFactory.sPlaylistsList.get(accountID).values());
+//		
+		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>();
+		YTPlaylist asssss = new YTPlaylist();
+		resultList.add(asssss);
 		
 		return resultList;
 	}
