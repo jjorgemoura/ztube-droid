@@ -10,6 +10,9 @@ public class YTApplication extends Application {
 	private boolean mDummyData = true;
 	//private int mSplashScreenDuration = 3; 		//secs 
 	
+	private String mPlaylistKey = "playlist_key";
+	private String mVideoKey = "playlist_key";
+	
 	
 	// ----------------------CONSTRUCTORS---------------------
 
@@ -24,11 +27,23 @@ public class YTApplication extends Application {
 		
 		return mDummyData;
 	}
+
+
+	public String playlistKey() {
+		return mPlaylistKey;
+	}
+
+
+	public String videoKey() {
+		return mVideoKey;
+	}
 	
 //	public int splashScreenDuration() {
 //		
 //		return mSplashScreenDuration;
 //	}
+	
+	
 	
 	// ----------------------PRIVATE METHODS---------------------
 	

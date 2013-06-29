@@ -1,5 +1,11 @@
 package com.zindon.ztube.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.util.Log;
+
+import com.zindon.ztube.domain.data.DummyDataFactory;
 import com.zindon.ztube.utils.ZDDate;
 
 
@@ -56,7 +62,24 @@ public class YTVideo {
 
 
     //-----------------Static Methods------------------
-
+    public static List<YTVideo> findByPlaylistId(String playlistIdentifier) {
+    	
+    	List<YTVideo> resultList = new ArrayList<YTVideo>();
+    	
+    	if(true) {
+    		
+    		resultList = DummyDataFactory.dummyVideosByPlaylist(playlistIdentifier);
+    	}
+    	else {
+    		
+    		
+    	}
+    	
+    	
+    	Log.d(TAG, "YTVideo: Size = " + resultList.size());
+    	
+    	return resultList;
+    }
 
 
 

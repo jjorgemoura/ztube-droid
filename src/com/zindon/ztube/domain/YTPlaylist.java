@@ -33,6 +33,8 @@ public class YTPlaylist {
     private ZDDate mUpdatedDate = null;
     
     
+    //private String
+    
     //
     private List<YTVideo> mVideosList = null;
 

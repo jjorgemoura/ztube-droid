@@ -7,5 +7,7 @@
     <string name="hello_world">Hello world - Jorge!</string>
     
     <string name="splash_image">ztube</string>
+    
+    <string name="listview_image_description">youtube thumbnail</string>
 
 </resources>

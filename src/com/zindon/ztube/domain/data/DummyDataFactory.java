@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import android.util.Log;
+
 import com.zindon.ztube.domain.YTAccount;
 import com.zindon.ztube.domain.YTHistoryVideo;
 import com.zindon.ztube.domain.YTPlaylist;
@@ -135,6 +137,8 @@ public class DummyDataFactory {
 		sVideosHistoryList.put("acxpt1", tempVideoListh1);
 		sVideosHistoryList.put("acxpt1", tempVideoListh2);
 		sVideosHistoryList.put("acxpt1", tempVideoListh3);
+		
+		Log.d("DUMMY DATA", sAccountsList.toString());
 	}
 	
 	
@@ -163,17 +167,28 @@ public class DummyDataFactory {
 	 */
 	public static List<YTPlaylist> dummyPlaylistsBySubscription(String accountID) {
 		
-//		Map<String, YTPlaylist> xx = DummyDataFactory.sPlaylistsList.get(accountID);
-//		
-//		List<YTPlaylist> yy = (List<YTPlaylist>) xx.values();
-//		
-//		int ddd = yy.size();
-//		
-//		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>(DummyDataFactory.sPlaylistsList.get(accountID).values());
-//		
 		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>();
-		YTPlaylist asssss = new YTPlaylist();
-		resultList.add(asssss);
+		
+		
+		Map<String, YTPlaylist> xx = DummyDataFactory.sPlaylistsList.get(accountID);
+		
+		//List<YTPlaylist> yy = (List<YTPlaylist>) xx.values();
+		
+		for(Iterator<String> it = xx.keySet().iterator(); it.hasNext();)  {
+			
+			String plIdentifier = it.next();
+			YTPlaylist pl = xx.get(plIdentifier);
+						
+			resultList.add(pl);
+		}
+		
+		
+		
+		//To debug
+//		List<YTPlaylist> resultList = new ArrayList<YTPlaylist>();
+//		YTPlaylist asssss = new YTPlaylist();
+//		resultList.add(asssss);
+		//--------
 		
 		return resultList;
 	}
@@ -205,7 +220,24 @@ public class DummyDataFactory {
 	
 	public static List<YTVideo> dummyVideosByPlaylist(String playlistID) {
 				
-		List<YTVideo> resultList = new ArrayList<YTVideo>(DummyDataFactory.sVideosList.get(playlistID).values());
+		//List<YTVideo> resultList = new ArrayList<YTVideo>(DummyDataFactory.sVideosList.get(playlistID).values());		
+
+		List<YTVideo> resultList = new ArrayList<YTVideo>();
+		
+		
+		Map<String, YTVideo> xx = DummyDataFactory.sVideosList.get(playlistID);
+		
+		//List<YTPlaylist> yy = (List<YTPlaylist>) xx.values();
+		
+		for(Iterator<String> it = xx.keySet().iterator(); it.hasNext();)  {
+			
+			String vdIdentifier = it.next();
+			YTVideo vd = xx.get(vdIdentifier);
+						
+			resultList.add(vd);
+		}
+		
+		
 		
 		return resultList;
 	} 

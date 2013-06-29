@@ -4,8 +4,8 @@ package com.zindon.ztube;
 import java.util.List;
 
 import com.zindon.ztube.application.YTApplication;
-import com.zindon.ztube.domain.YTPlaylist;
-import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
+import com.zindon.ztube.domain.YTVideo;
+import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,20 +16,25 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
-public class PlaylistActivity extends Activity implements OnItemClickListener {
+
+public class VideoListActivity extends Activity implements OnItemClickListener {
 
 	// ----------------------VARS---------------------
-	protected static final String TAG = "Main Activity";
+	protected static final String TAG = "Video List Activity";
 	
+	private List<YTVideo> theItems = null;
+	private String playlistIdentifier = null;
 	 		
-	private List<YTPlaylist> theItems = null;
-	
 	
 	// ----------------------CONSTRUCTORS---------------------
-
+	public VideoListActivity() {
+		
+		
+	}
+	
  	// ----------------------STATIC METHODS---------------------
 	
 		
@@ -38,19 +43,29 @@ public class PlaylistActivity extends Activity implements OnItemClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_playlists);
+		setContentView(R.layout.activity_videos);
+				
+			
+		Log.d(TAG, "Videos: Create");
 		
-		Log.d(TAG, "Playlist: Create");
+		
+		Intent intent = getIntent();
+		YTApplication ytApp = (YTApplication)getApplication();
+		
+		this.playlistIdentifier = intent.getStringExtra(ytApp.playlistKey());
+		
+		
 		
 		//List View
-		theItems = YTPlaylist.findByUserId("acxpt1");
+		theItems = YTVideo.findByPlaylistId(this.playlistIdentifier);
+		
 		
 		//Instantiate the Base Adapter
-		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
 
 		
 		//Setup The ListView
- 		ListView theListView = (ListView) findViewById(R.id.listView1);
+ 		ListView theListView = (ListView) findViewById(R.id.listView2videos);
 
  		//
  		//LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,19 +73,65 @@ public class PlaylistActivity extends Activity implements OnItemClickListener {
  		//theListView.addFooterView(inflater.inflate(R.layout.list_footer, null));
  		
  		//
- 		theListView.setAdapter(playlistBaseAdapter);
+ 		theListView.setAdapter(videosBaseAdapter);
  		theListView.setTextFilterEnabled(true);
  		theListView.setOnItemClickListener(this);
- 		
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+
 	
+	
+	@Override
+	protected void onStart() {
+		
+		super.onStart();
+		Log.d(TAG, "method: onStart");
+		
+		
+		
+		
+	}
+    
+	@Override
+    protected void onRestart() {
+		
+		super.onRestart();
+		Log.i(TAG, "method: onRestart");
+	}
+
+	@Override
+    protected void onResume() {
+		
+		super.onResume();
+		Log.i(TAG, "method: onResume");
+	}
+
+	@Override
+    protected void onPause() {
+		
+		super.onPause();
+		Log.i(TAG, "method: onPause");
+	}
+
+	@Override
+    protected void onStop() {
+		
+		super.onStop();
+		Log.i(TAG, "method: onStop");
+	}
+
+	@Override
+    protected void onDestroy() {
+		
+		super.onDestroy();
+		Log.i(TAG, "method: onDestroy");
+	}
 	
 	
 	
@@ -90,18 +151,16 @@ public class PlaylistActivity extends Activity implements OnItemClickListener {
 		Context context = getApplicationContext(); 
 		YTApplication ytApp = (YTApplication)getApplication();
 		
-		//CharSequence text = "CLICKED ON: " + theItems.get(position);
-		//Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT); toast.show();
+		CharSequence text = "CLICKED ON: " + theItems.get(position);
+		Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT); toast.show();
 		
 		
 		//Start Activity
-		Intent intent = new Intent(context, VideoListActivity.class);
-		intent.putExtra(ytApp.playlistKey(), theItems.get(position).playlistIdentifier());
-		startActivity(intent);
+//		Intent intent = new Intent(context, VideoListActivity.class);
+//		intent.putExtra(ytApp.playlistKey(), theItems.get(position).playlistIdentifier());
+//		startActivity(intent);
 		
 	}
-	
-	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	
 	// ----------------------PRIVATE METHODS---------------------
