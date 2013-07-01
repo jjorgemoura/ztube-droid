@@ -82,6 +82,22 @@ public class YTVideo {
     }
 
 
+    public static YTVideo findByIdentifier(String videoIdentifier) {
+    	
+    	YTVideo result = new YTVideo();
+    	
+    	if(true) {
+    		
+    		result = DummyDataFactory.dummyVideo(videoIdentifier);
+    	}
+    	else {
+    		
+    		
+    	}
+    	
+    	
+    	return result;
+    }
 
 
 

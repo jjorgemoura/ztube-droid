@@ -151,14 +151,14 @@ public class VideoListActivity extends Activity implements OnItemClickListener {
 		Context context = getApplicationContext(); 
 		YTApplication ytApp = (YTApplication)getApplication();
 		
-		CharSequence text = "CLICKED ON: " + theItems.get(position);
-		Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT); toast.show();
+//		CharSequence text = "CLICKED ON: " + theItems.get(position);
+//		Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT); toast.show();
 		
 		
 		//Start Activity
-//		Intent intent = new Intent(context, VideoListActivity.class);
-//		intent.putExtra(ytApp.playlistKey(), theItems.get(position).playlistIdentifier());
-//		startActivity(intent);
+		Intent intent = new Intent(context, VideoDetailActivity.class);
+		intent.putExtra(ytApp.videoKey(), theItems.get(position).videoIdentifier());
+		startActivity(intent);
 		
 	}
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
