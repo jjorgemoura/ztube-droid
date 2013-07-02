@@ -6,7 +6,9 @@ public class YTApplication extends Application {
 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "YT Application";
-	 
+	
+	private String mDEVELOPER_KEY = "AIzaSyCzBmY5AIhMYEyjQMXSRo8cM5Ce3UUGZ6M";
+	
 	private boolean mDummyData = true;
 	//private int mSplashScreenDuration = 3; 		//secs 
 	
@@ -36,6 +38,10 @@ public class YTApplication extends Application {
 
 	public String videoKey() {
 		return mVideoKey;
+	}
+	
+	public String developerKey() {
+		return mDEVELOPER_KEY;
 	}
 	
 //	public int splashScreenDuration() {
