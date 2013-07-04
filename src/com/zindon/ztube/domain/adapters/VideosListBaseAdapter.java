@@ -3,9 +3,7 @@ package com.zindon.ztube.domain.adapters;
 import java.util.List;
 
 import com.zindon.ztube.R;
-import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTVideo;
-import com.zindon.ztube.domain.uidto.PlaylistDTO;
 import com.zindon.ztube.domain.uidto.VideoDTO;
 
 import android.app.Activity;

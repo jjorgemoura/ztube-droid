@@ -51,6 +51,34 @@ App Context
 http://androidresearch.wordpress.com/2012/03/22/defining-global-variables-in-android/
 
 
+
+//Install APKs
+http://stackoverflow.com/questions/11732467/installing-an-apk-on-android-emulator-on-mac-os
+http://www.apk4.net/applications/media-video/youtube-4-4-11-apk/
+
+
+
+
+
+
 Others Useful
 http://stackoverflow.com/questions/3208445/android-activities-vs-views
 
+
+
+
+Outras notas
+tens 3 opções para reprodução de videos:
+- Através de Intents para ser reproduzido numa app externa, como a app do Youtube
+- Através de VideoView
+- Através de YoutubePlayer
+
+Aqui vão alguns links para ajudar:
+- Intent: 
+    http://stackoverflow.com/questions/574195/android-youtube-app-play-video-intent
+- VideoView: 
+    http://developer.android.com/reference/android/widget/VideoView.html
+    http://stackoverflow.com/questions/13814055/how-to-play-youtube-videos-in-android-video-view
+ 
+ /Users/jorge/Applications/adt-bundle-mac-x86_64-20130522/sdk/platform-tools
+ ./adb install /Users/jorge/Downloads/YouTube_v4.4.11.apk

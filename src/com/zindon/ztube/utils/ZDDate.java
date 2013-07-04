@@ -10,7 +10,13 @@ import java.util.GregorianCalendar;
 public class ZDDate extends GregorianCalendar {
 
 	//--------------------------VARS------------------------------------
-	private static final String TAG = "ZDDate";
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	//private static final String TAG = "ZDDate";
     
 	/**
      * The format used by default (yyyy-MM-dd)
@@ -75,6 +81,10 @@ public class ZDDate extends GregorianCalendar {
         String f = ZDDate.FORMAT_ONLY_DATE;
         
         
+        if (inDate == null) {
+            throw new InvalidParameterException("The date could not be null");
+        }
+        
         try {
             
             String[] split = inDate.split("-");
@@ -93,9 +103,7 @@ public class ZDDate extends GregorianCalendar {
         
         this.mDefaultFormat = f;
 
-        if (inDate == null) {
-            throw new InvalidParameterException("The date could not be null");
-        }
+        
 
         //set the format to use as a constructor argument
         SimpleDateFormat dateFormat = new SimpleDateFormat(this.mDefaultFormat);
