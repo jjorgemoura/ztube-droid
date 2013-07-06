@@ -107,11 +107,11 @@ public class DummyDataFactory {
 		vd2.setupAuthor("fghfg345", "jorge", "");
 		vd2.setupVideoData(new ZDDate(), new ZDDate(), 400, 9346, 8000, 3);
 		
-		vd3.setupVideo("vdfgh6534", "Eriatarka", "Video da musica Eriatarka.", "");
+		vd3.setupVideo("mQIMgfY2pEc", "Eriatarka", "Video da musica Eriatarka.", "");
 		vd3.setupAuthor("fghfg23899", "jorge", "");
 		vd3.setupVideoData(new ZDDate(), new ZDDate(), 500, 8346, 7000, 2);
 		
-		tempVideoList1.put("vdghjfghj", vd1);
+		tempVideoList1.put("mQIMgfY2pEc", vd1);
 		tempVideoList2.put("vd654fghf", vd2);
 		tempVideoList3.put("vdfgh6534", vd3);
 		

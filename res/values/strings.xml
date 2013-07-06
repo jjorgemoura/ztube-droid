@@ -10,4 +10,12 @@
     
     <string name="listview_image_description">youtube thumbnail</string>
 
+    <string name="alertdialog_title">Internet Connectivity</string>
+    <string name="alertdialog_msg">There is no Internet Connection available in this device right now.</string>
+    <string name="alertdialog_ok">ok</string>
+    <string name="alertdialog_settings">settings</string>
+    
+    
+    
+    
 </resources>

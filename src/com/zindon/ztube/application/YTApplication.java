@@ -9,7 +9,7 @@ public class YTApplication extends Application {
 	
 	private String mDEVELOPER_KEY = "AIzaSyCzBmY5AIhMYEyjQMXSRo8cM5Ce3UUGZ6M";
 	
-	private boolean mDummyData = true;
+	private boolean mDummyData = false;
 	//private int mSplashScreenDuration = 3; 		//secs 
 	
 	private String mPlaylistKey = "playlist_key";

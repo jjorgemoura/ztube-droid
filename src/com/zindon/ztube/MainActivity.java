@@ -1,7 +1,12 @@
 package com.zindon.ztube;
 
+import com.zindon.ztube.utils.NetworkConnectivity;
+
 import android.os.Bundle;
+import android.provider.Settings;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -38,8 +43,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		Log.d(TAG, "Start SPLASH");
 		startActivity(new Intent(this, SplashActivity.class));
-		Log.d(TAG, "Resume SPLASH");
-		
 		
 		
 		
@@ -81,7 +84,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 //		Log.d(TAG, "Start SPLASH");
 //		startActivity(new Intent(this, SplashActivity.class));
-//		Log.d(TAG, "Resume SPLASH");
 //		
 	}
 
@@ -89,7 +91,41 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onResume() {
 		
 		super.onResume();
-		Log.i(TAG, "method: onResume");
+		Log.d(TAG, "method: onResume");
+		
+		boolean isNetConnected = NetworkConnectivity.isConnected(getApplicationContext());
+		
+		if(!isNetConnected) {
+			
+			// 1. Instantiate an AlertDialog.Builder with its constructor
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+			// 2. Chain together various setter methods to set the dialog characteristics
+			builder.setMessage(R.string.alertdialog_msg)
+			       .setTitle(R.string.alertdialog_title);
+
+			builder.setPositiveButton(R.string.alertdialog_ok, new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			
+			builder.setNegativeButton(R.string.alertdialog_settings, new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent);
+				}
+			});
+			
+			// 3. Get the AlertDialog from create()
+			AlertDialog dialog = builder.create();
+			dialog.show();
+		}
 	}
 
 	@Override

@@ -1,11 +1,13 @@
 package com.zindon.ztube;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.zindon.ztube.application.YTApplication;
 import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
+import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,9 +18,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class PlaylistActivity extends Activity implements OnItemClickListener {
+public class PlaylistActivity extends Activity implements OnItemClickListener, OnAppRequest {
 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Main Activity";
@@ -41,8 +44,18 @@ public class PlaylistActivity extends Activity implements OnItemClickListener {
 		
 		Log.d(TAG, "Playlist: Create");
 		
+		YTApplication ytApp = (YTApplication)getApplication();
+		
+		
+		//Read UserIdentifier from SharedPreferences
+		String userIdentifier;
+		userIdentifier = "condorouro";
+		
+		
 		//List View
-		theItems = YTPlaylist.findByUserId("acxpt1");
+		//theItems = YTPlaylist.findByUserId("acxpt1");
+		theItems = YTPlaylist.findByUserId(userIdentifier, this, ytApp.useDummyData());
+		
 		
 		//Instantiate the Base Adapter
 		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
@@ -100,6 +113,33 @@ public class PlaylistActivity extends Activity implements OnItemClickListener {
 		
 	}
 	
+	
+	
+	
+	//Para o CALLBACK
+	public void onRequestCompleted(Object result) {
+		
+		List<YTPlaylist> myResultList = new ArrayList<YTPlaylist>();
+		
+		if(result instanceof List) {
+			
+			myResultList = (List<YTPlaylist>)result; 
+			Log.d(TAG, "List Size: " + myResultList.size());
+		}
+		
+		
+	}
+	
+	//Para o ASYNC
+  	public void onAsyncRequestCompleted(String result) {
+  		
+  		Log.d(TAG, "onAsyncRequestCompleted");
+  		
+  		//CharSequence text = "CALL BACK Async EVENT: " + result;
+  		
+  		YTPlaylist.buildList(result, this);
+  		
+  	}
 	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	

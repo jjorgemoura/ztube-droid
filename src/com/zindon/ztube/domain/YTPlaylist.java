@@ -3,10 +3,18 @@ package com.zindon.ztube.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.zindon.ztube.domain.data.DummyDataFactory;
+import com.zindon.ztube.utils.RequestAsyncTask;
+import com.zindon.ztube.utils.YouTubeApi;
 import com.zindon.ztube.utils.ZDDate;
+import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 /**
  * Created by jorge on 6/17/13.
@@ -52,16 +60,22 @@ public class YTPlaylist {
 
 
     //-----------------Static Methods------------------
-    public static List<YTPlaylist> findByUserId(String userId) {
+    public static List<YTPlaylist> findByUserId(String userId, OnAppRequest activity, boolean dummyData) {
     	
     	List<YTPlaylist> resultList = new ArrayList<YTPlaylist>();
     	
-    	if(true) {
+    	if(dummyData) {
     		
     		resultList = DummyDataFactory.dummyPlaylistsBySubscription(userId);
     	}
     	else {
     		
+    		//"https://gdata.youtube.com/feeds/api/users/fcporto/playlists?v=2&alt=json"
+    		
+    		String uri = YouTubeApi.playlistsURI(userId);
+    		
+    		RequestAsyncTask requestAsync = new RequestAsyncTask(activity);
+			requestAsync.execute(uri);
     		
     	}
     	
@@ -71,11 +85,59 @@ public class YTPlaylist {
     	return resultList;
     }
 
+    public static void buildList(String json, OnAppRequest activity) {
+    	
+    	List<YTPlaylist> resultList = new ArrayList<YTPlaylist>();
+    	YTPlaylist xPlayList;
+    	
+    	try {
+    	
+	    	JSONObject jsonParser = new JSONObject(json);
+	    	JSONArray jsonArrayEntry = jsonParser.getJSONObject("feed").getJSONArray("entry");
+	    	
+	    	for(int i = 0; i < jsonArrayEntry.length(); i++) {
+	    		
+	    		JSONObject eachEntry = jsonArrayEntry.getJSONObject(i);
+	    		
+	    		xPlayList = new YTPlaylist();
+	    		
+	    		//String xAuthor = 
+				String xTitle = eachEntry.getJSONObject("title").toString();
+				String xSummary = eachEntry.getJSONObject("yt$description").toString();
+				String xUri = eachEntry.getJSONObject("id").toString();
+				String xIdentifier = eachEntry.getJSONObject("playlistId").toString();
+	    		
+	    		
+	    		xPlayList.setupPlaylist(xIdentifier, xTitle, xSummary, xUri);
+		    	resultList.add(xPlayList);
+	    	}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());
+	    	activity.onRequestCompleted(resultList);
+    	
+    	}
+    	catch(JSONException ex) {
+    		ex.printStackTrace();
+    	}
+    	catch(Exception ex) {
+    		
+    		throw new RuntimeException(ex);
+    	}
+    }
 
 
 
 
     //-----------------Public Methods------------------
+  
     
     public void setupPlaylist(String identifier, String title, String summary, String youtubeUri) {
     	
