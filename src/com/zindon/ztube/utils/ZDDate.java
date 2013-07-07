@@ -31,7 +31,25 @@ public class ZDDate extends GregorianCalendar {
     /**
      * The format used by default (yyyy-MM-dd HH:mm:ss)
      */
-    public static final String FORMAT_DATE_HOUR_MIN_SS = "yyyy-MM-dd HH:mm:ss.SS";
+    public static final String FORMAT_DATE_HOUR_MIN_SS = "yyyy-MM-dd HH:mm:ss.SSS";
+    
+    
+    public static String BuildYouTubeDate(String ytDate) {
+    	
+    	StringBuilder sb = new StringBuilder();
+    	
+    	String[] splitDate = ytDate.split("T");
+    	
+    	sb.append(splitDate[0]);
+    	sb.append(" ");
+    	
+    	
+    	String[] splitTime = splitDate[1].split("Z");
+    	
+    	sb.append(splitTime[0]);
+    	
+    	return sb.toString();
+    } 
     
     
     private String mDefaultFormat = ZDDate.FORMAT_ONLY_DATE;

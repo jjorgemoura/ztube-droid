@@ -44,6 +44,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 		
 		Log.d(TAG, "Playlist: Create");
 		
+		//Buscar contexto da App
 		YTApplication ytApp = (YTApplication)getApplication();
 		
 		
@@ -119,15 +120,24 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	//Para o CALLBACK
 	public void onRequestCompleted(Object result) {
 		
-		List<YTPlaylist> myResultList = new ArrayList<YTPlaylist>();
+		//List<YTPlaylist> myResultList = null;
 		
 		if(result instanceof List) {
 			
-			myResultList = (List<YTPlaylist>)result; 
-			Log.d(TAG, "List Size: " + myResultList.size());
+			theItems = (List<YTPlaylist>)result; 
+			Log.d(TAG, "List Size: " + theItems.size());
 		}
 		
+		//PROCESS
+		//theItems = YTPlaylist.findByUserId(userIdentifier, this, ytApp.useDummyData());
+	
+		//Instantiate the Base Adapter
+		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
+
 		
+		//Setup The ListView
+ 		ListView theListView = (ListView) findViewById(R.id.listView1);
+ 		theListView.setAdapter(playlistBaseAdapter);
 	}
 	
 	//Para o ASYNC
@@ -137,8 +147,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
   		
   		//CharSequence text = "CALL BACK Async EVENT: " + result;
   		
-  		YTPlaylist.buildList(result, this);
-  		
+  		YTPlaylist.buildList(result, this);	
   	}
 	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------

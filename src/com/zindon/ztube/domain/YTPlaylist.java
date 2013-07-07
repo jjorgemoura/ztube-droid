@@ -102,13 +102,28 @@ public class YTPlaylist {
 	    		xPlayList = new YTPlaylist();
 	    		
 	    		//String xAuthor = 
-				String xTitle = eachEntry.getJSONObject("title").toString();
-				String xSummary = eachEntry.getJSONObject("yt$description").toString();
-				String xUri = eachEntry.getJSONObject("id").toString();
-				String xIdentifier = eachEntry.getJSONObject("playlistId").toString();
+				String xTitle = eachEntry.getJSONObject("title").getString("$t");
+				String xUri = eachEntry.getString("id");
+				String xIdentifier = eachEntry.getString("yt$playlistId");
+				//String xSummary = eachEntry.getJSONObject("yt$description").toString();
+	    		String xSummary = "sdfsdfsdf s";
 	    		
+	    		Log.d(TAG, eachEntry.getString("published"));
+	    		
+	    		JSONObject tmpCountHint = eachEntry.getJSONObject("yt$countHint");
+	    		int videoQuantity = tmpCountHint.getInt("$t");
+	    		//int videoQuantity = eachEntry.getJSONArray("gd$feedLink").getJSONObject(0).getInt("countHint");
+	    		
+	    		ZDDate publishDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("published").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+	    		//ZDDate publishDate = new ZDDate(eachEntry.getJSONObject("published").getString("$t"), "yyyy-MM-dd HH:mm:ss.SSS ");
+	    		ZDDate updatedDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("updated").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+	    		//ZDDate updatedDate = new ZDDate(eachEntry.getJSONObject("updated").getString("$t"), "yyyy-MM-dd HH:mm:ss.SSS ");
+	    		
+	    		Log.d(TAG, publishDate.toString());
 	    		
 	    		xPlayList.setupPlaylist(xIdentifier, xTitle, xSummary, xUri);
+	    		xPlayList.setupPlaylistSettings(videoQuantity, publishDate, updatedDate);
+	    		
 		    	resultList.add(xPlayList);
 	    	}
 	    	
