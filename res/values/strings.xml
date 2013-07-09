@@ -15,6 +15,13 @@
     <string name="alertdialog_ok">ok</string>
     <string name="alertdialog_settings">settings</string>
     
+    <string name="btn_saveuser">Save UserID</string>
+    <string name="btn_adddummyhist">Add Dummy Data to History</string>
+	<string name="btn_delhistory">Reset Video History</string>
+    
+    <string name="sharedpreference_hash_pref1">userid</string>
+    <string name="sharedpreference_privatefile">com.zindon.ztube.sharedprefprivatefile</string>
+    <string name="datafile_privatefile">ztube_history_datafile</string>
     
     
     

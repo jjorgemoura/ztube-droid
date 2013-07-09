@@ -6,7 +6,10 @@ import java.util.List;
 import android.util.Log;
 
 import com.zindon.ztube.domain.data.DummyDataFactory;
+import com.zindon.ztube.utils.RequestAsyncTask;
+import com.zindon.ztube.utils.YouTubeApi;
 import com.zindon.ztube.utils.ZDDate;
+import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 
 
@@ -77,6 +80,27 @@ public class YTVideo {
     	
     	
     	Log.d(TAG, "YTVideo: Size = " + resultList.size());
+    	
+    	return resultList;
+    }
+    
+    public static List<YTVideo> findByVideoHistory(String videoHistory, OnAppRequest activity) {
+    	
+    	List<YTVideo> resultList = new ArrayList<YTVideo>();
+    	
+    	
+    	String[] splitArray =  videoHistory.split(";");
+    	
+    	for(int i = 0; i < splitArray.length; i++) {
+    		
+    		String theVideoId = splitArray[i];
+    		
+    		
+    		String uri = YouTubeApi.videoURI(theVideoId);
+    		
+    		RequestAsyncTask requestAsync = new RequestAsyncTask(activity);
+    		requestAsync.execute(uri);
+    	}
     	
     	return resultList;
     }

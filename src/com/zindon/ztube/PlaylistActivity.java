@@ -1,7 +1,6 @@
 package com.zindon.ztube;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.zindon.ztube.application.YTApplication;
@@ -18,7 +17,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class PlaylistActivity extends Activity implements OnItemClickListener, OnAppRequest {

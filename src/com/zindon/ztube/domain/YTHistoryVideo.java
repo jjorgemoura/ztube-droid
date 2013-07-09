@@ -47,6 +47,33 @@ public class YTHistoryVideo extends YTVideo implements Persistable {
     }
 
 
+    public static String dummyData() {
+
+    	StringBuilder sb = new StringBuilder();
+    	
+        sb.append("AlhKf7FM7qs");
+        sb.append(";");
+        sb.append("h33I93LAkAk");
+        sb.append(";");
+        sb.append("e3eD9v2KG6Q");
+        sb.append(";");
+        sb.append("0VM2kRrCBb8");
+        sb.append(";");
+        sb.append("JOKn33-q4Ao");
+        sb.append(";");
+        sb.append("hdrVKKsCIFI");
+        sb.append(";");
+        sb.append("yn0omuqUnIg");
+        sb.append(";");
+        sb.append("sHfVXAlz-e4");
+        sb.append(";");
+        sb.append("kPk_XadXs6Q");
+        sb.append(";");
+        sb.append("on6KBN7x3IM");
+        
+        return sb.toString();
+    }
+
 
 
 

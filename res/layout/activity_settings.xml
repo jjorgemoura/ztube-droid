@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal" >
+    
+    
+    <Button
+        android:id="@+id/button_saveuser"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:textSize="15sp"
+        android:text="@string/btn_saveuser" />
+
+     <Button
+        android:id="@+id/button_adddummyhist"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:textSize="15sp"
+        android:text="@string/btn_adddummyhist" />
+
+    <Button
+        android:id="@+id/button_deletehistory"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:textSize="15sp"
+        android:text="@string/btn_delhistory" />
+    
+
+</LinearLayout>

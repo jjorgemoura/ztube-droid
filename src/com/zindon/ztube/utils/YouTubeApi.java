@@ -41,6 +41,19 @@ public class YouTubeApi {
 	
 		return sb.toString();
 	}
+	
+	
+	public static String videoURI(String videoIdentifier) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		
+		sb.append("https://gdata.youtube.com/feeds/api/videos/");
+		sb.append(videoIdentifier);
+		sb.append("?v=2&alt=json");
+	
+		return sb.toString();
+	}
  	// ----------------------PUBLIC METHODS - INTERFACE--------------------
 		 	
 		
