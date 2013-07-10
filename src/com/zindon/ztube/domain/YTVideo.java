@@ -113,17 +113,21 @@ public class YTVideo {
     }
 
 
-    public static YTVideo findByIdentifier(String videoIdentifier) {
+    public static YTVideo findByIdentifier(String videoIdentifier, OnAppRequest activity, boolean dummyData) {
     	
     	YTVideo result = new YTVideo();
     	
-    	if(true) {
+    	if(dummyData) {
     		
     		result = DummyDataFactory.dummyVideo(videoIdentifier);
     	}
     	else {
     		
     		
+    		String uri = YouTubeApi.videoURI(videoIdentifier);
+    		
+    		RequestAsyncTask requestAsync = new RequestAsyncTask(activity);
+			requestAsync.execute(uri);
     	}
     	
     	
@@ -200,7 +204,62 @@ public class YTVideo {
     	}
     }
 
-
+    public static void buildVideo(String json, OnAppRequest activity) {
+    	
+    	//List<YTVideo> resultList = new ArrayList<YTVideo>();
+    	YTVideo xVideo = new YTVideo();;
+    	
+    	try {
+    	
+	    	JSONObject jsonParser = new JSONObject(json);
+	    	
+	    	JSONObject eachEntry = jsonParser.getJSONObject("entry");
+	    	
+	    	//AUTHOR
+	    	JSONArray authorJsonArray = eachEntry.getJSONArray("author");
+	    	
+	    	String xUniqueIdentifier = authorJsonArray.getJSONObject(0).getJSONObject("yt$userId").getString("$t");
+			String xAuthor = authorJsonArray.getJSONObject(0).getJSONObject("name").getString("$t");
+			String xAuthorUri = authorJsonArray.getJSONObject(0).getJSONObject("uri").getString("$t");
+	    	
+	    		
+    		
+    		//VIDEO
+    		String xVideoIdentifier = eachEntry.getJSONObject("media$group").getJSONObject("yt$videoid").getString("$t");
+    		String xTitle = eachEntry.getJSONObject("title").getString("$t");
+    		String xDescription = "";
+    		String xVideoUri = eachEntry.getJSONObject("content").getString("src");
+    		
+    		    		
+    		//VIDEO MORE DATA
+    		ZDDate publishDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("published").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+    		ZDDate updatedDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("updated").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+    		
+    		int durationInSeconds = eachEntry.getJSONObject("media$group").getJSONObject("yt$duration").getInt("seconds");
+    		int playQt = eachEntry.getJSONObject("yt$statistics").getInt("viewCount");
+    		int likesQt = eachEntry.getJSONObject("yt$rating").getInt("numLikes");
+    		int dislikesQt = eachEntry.getJSONObject("yt$rating").getInt("numDislikes");
+    		
+    		
+    		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
+    		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);
+    		xVideo.setupAuthor(xUniqueIdentifier, xAuthor, xAuthorUri);
+    		
+	    	
+    	
+	    	
+	    	//
+	    	activity.onRequestCompleted(xVideo);
+    	
+    	}
+    	catch(JSONException ex) {
+    		ex.printStackTrace();
+    	}
+    	catch(Exception ex) {
+    		
+    		throw new RuntimeException(ex);
+    	}
+    }
 
     //-----------------Public Methods------------------
     public void setupVideo(String videoIdentifier, String title, String description, String videoUri) {

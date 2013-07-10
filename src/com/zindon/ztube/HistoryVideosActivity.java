@@ -55,8 +55,8 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		Log.d(TAG, "History Videos: Create");
 		
 		
-		Intent intent = getIntent();
-		YTApplication ytApp = (YTApplication)getApplication();
+		//Intent intent = getIntent();
+		//YTApplication ytApp = (YTApplication)getApplication();
 		
 		
 		
@@ -76,7 +76,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 
 		
 		//Setup The ListView
- 		ListView theListView = (ListView) findViewById(R.id.listView2videos);
+ 		ListView theListView = (ListView) findViewById(R.id.listViewhvideos);
 
  		
  		//
@@ -172,17 +172,17 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	//Para o CALLBACK
 	public void onRequestCompleted(Object result) {
 		
-		List<YTVideo> myResultList = null;
+		//List<YTVideo> myResultList = null;
+		YTVideo myResultVideo = null;
 		
-		if(result instanceof List) {
+		if(result instanceof YTVideo) {
 			
-			myResultList = (List<YTVideo>)result; 
-			Log.d(TAG, "List Size: " + myResultList.size());
+			myResultVideo = (YTVideo)result; 
 		}
 		
 
 		//adiciona aos j‡ existentes.
-		theItems.addAll(myResultList);
+		theItems.add(myResultVideo);
 		
 	
 		//Instantiate the Base Adapter
@@ -199,7 +199,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
   		
   		Log.d(TAG, "onAsyncRequestCompleted");
   		
-  		YTVideo.buildList(result, this);	
+  		YTVideo.buildVideo(result, this);	
   	}
 	  	
 	  	

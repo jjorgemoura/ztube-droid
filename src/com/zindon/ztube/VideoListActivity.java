@@ -169,33 +169,33 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 	
 	
 	//Para o CALLBACK
-		public void onRequestCompleted(Object result) {
-			
-			
-			if(result instanceof List) {
-				
-				theItems = (List<YTVideo>)result; 
-				Log.d(TAG, "List Size: " + theItems.size());
-			}
-				
-			//Instantiate the Base Adapter
-			VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
-
-			
-			//Setup The ListView
-	 		ListView theListView = (ListView) findViewById(R.id.listView2videos);
-	 		theListView.setAdapter(videosBaseAdapter);
-		}
+	public void onRequestCompleted(Object result) {
 		
-		//Para o ASYNC
-	  	public void onAsyncRequestCompleted(String result) {
-	  		
-	  		Log.d(TAG, "onAsyncRequestCompleted");
-	  		
-	  		//CharSequence text = "CALL BACK Async EVENT: " + result;
-	  		
-	  		YTVideo.buildList(result, this);	
-	  	}
+		
+		if(result instanceof List) {
+			
+			theItems = (List<YTVideo>)result; 
+			Log.d(TAG, "List Size: " + theItems.size());
+		}
+			
+		//Instantiate the Base Adapter
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+
+		
+		//Setup The ListView
+ 		ListView theListView = (ListView) findViewById(R.id.listView2videos);
+ 		theListView.setAdapter(videosBaseAdapter);
+	}
+	
+	//Para o ASYNC
+  	public void onAsyncRequestCompleted(String result) {
+  		
+  		Log.d(TAG, "onAsyncRequestCompleted");
+  		
+  		//CharSequence text = "CALL BACK Async EVENT: " + result;
+  		
+  		YTVideo.buildList(result, this);	
+  	}
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	
 	// ----------------------PRIVATE METHODS---------------------
