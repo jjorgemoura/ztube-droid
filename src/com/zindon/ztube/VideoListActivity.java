@@ -4,8 +4,11 @@ package com.zindon.ztube;
 import java.util.List;
 
 import com.zindon.ztube.application.YTApplication;
+import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTVideo;
+import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
 import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
+import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,7 +22,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 
-public class VideoListActivity extends Activity implements OnItemClickListener {
+public class VideoListActivity extends Activity implements OnItemClickListener, OnAppRequest {
 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Video List Activity";
@@ -56,7 +59,7 @@ public class VideoListActivity extends Activity implements OnItemClickListener {
 		
 		
 		//List View
-		theItems = YTVideo.findByPlaylistId(this.playlistIdentifier);
+		theItems = YTVideo.findByPlaylistId(this.playlistIdentifier, this, ytApp.useDummyData());
 		
 		
 		//Instantiate the Base Adapter
@@ -160,6 +163,39 @@ public class VideoListActivity extends Activity implements OnItemClickListener {
 		startActivity(intent);
 		
 	}
+	
+	
+
+	
+	
+	//Para o CALLBACK
+		public void onRequestCompleted(Object result) {
+			
+			
+			if(result instanceof List) {
+				
+				theItems = (List<YTVideo>)result; 
+				Log.d(TAG, "List Size: " + theItems.size());
+			}
+				
+			//Instantiate the Base Adapter
+			VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+
+			
+			//Setup The ListView
+	 		ListView theListView = (ListView) findViewById(R.id.listView2videos);
+	 		theListView.setAdapter(videosBaseAdapter);
+		}
+		
+		//Para o ASYNC
+	  	public void onAsyncRequestCompleted(String result) {
+	  		
+	  		Log.d(TAG, "onAsyncRequestCompleted");
+	  		
+	  		//CharSequence text = "CALL BACK Async EVENT: " + result;
+	  		
+	  		YTVideo.buildList(result, this);	
+	  	}
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	
 	// ----------------------PRIVATE METHODS---------------------

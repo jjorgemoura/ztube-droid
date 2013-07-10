@@ -76,7 +76,6 @@ public class YTPlaylist {
     		
     		RequestAsyncTask requestAsync = new RequestAsyncTask(activity);
 			requestAsync.execute(uri);
-    		
     	}
     	
     	
@@ -128,11 +127,7 @@ public class YTPlaylist {
 	    	}
 	    	
 	    	
-	    	
-	    	
-	    	
-	    	
-	    	
+	    		    	
 	    	
 	    	
 	    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());

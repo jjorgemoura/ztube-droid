@@ -125,10 +125,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 			theItems = (List<YTPlaylist>)result; 
 			Log.d(TAG, "List Size: " + theItems.size());
 		}
-		
-		//PROCESS
-		//theItems = YTPlaylist.findByUserId(userIdentifier, this, ytApp.useDummyData());
-	
+			
 		//Instantiate the Base Adapter
 		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
 

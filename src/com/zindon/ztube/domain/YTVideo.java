@@ -3,6 +3,10 @@ package com.zindon.ztube.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.util.Log;
 
 import com.zindon.ztube.domain.data.DummyDataFactory;
@@ -65,17 +69,20 @@ public class YTVideo {
 
 
     //-----------------Static Methods------------------
-    public static List<YTVideo> findByPlaylistId(String playlistIdentifier) {
+    public static List<YTVideo> findByPlaylistId(String playlistIdentifier, OnAppRequest activity, boolean dummyData) {
     	
     	List<YTVideo> resultList = new ArrayList<YTVideo>();
     	
-    	if(true) {
+    	if(dummyData) {
     		
     		resultList = DummyDataFactory.dummyVideosByPlaylist(playlistIdentifier);
     	}
     	else {
     		
+    		String uri = YouTubeApi.videosURI(playlistIdentifier);
     		
+    		RequestAsyncTask requestAsync = new RequestAsyncTask(activity);
+			requestAsync.execute(uri);
     	}
     	
     	
@@ -121,6 +128,74 @@ public class YTVideo {
     	
     	
     	return result;
+    }
+    
+    
+    public static void buildList(String json, OnAppRequest activity) {
+    	
+    	List<YTVideo> resultList = new ArrayList<YTVideo>();
+    	YTVideo xVideo;
+    	
+    	try {
+    	
+	    	JSONObject jsonParser = new JSONObject(json);
+	    	
+	    	JSONObject mainObject = jsonParser.getJSONObject("feed");
+	    	
+	    	//AUTHOR
+	    	String xUniqueIdentifier = mainObject.getJSONObject("author").getJSONObject("yt$userId").getString("$t");
+			String xAuthor = mainObject.getJSONObject("author").getJSONObject("name").getString("$t");
+			String xAuthorUri = mainObject.getJSONObject("author").getJSONObject("uri").getString("$t");
+	    	
+	    	
+	    	
+	    	
+	    	JSONArray jsonArrayEntry = jsonParser.getJSONObject("feed").getJSONArray("entry");
+	    	
+	    	for(int i = 0; i < jsonArrayEntry.length(); i++) {
+	    		
+	    		JSONObject eachEntry = jsonArrayEntry.getJSONObject(i);
+	    		
+	    		xVideo = new YTVideo();
+	    		
+	    		
+	    		//VIDEO
+	    		String xVideoIdentifier = eachEntry.getJSONObject("media$group").getJSONObject("yt$videoid").getString("$t");
+	    		String xTitle = eachEntry.getJSONObject("title").getString("$t");
+	    		String xDescription = "";
+	    		String xVideoUri = eachEntry.getJSONObject("content").getString("src");
+	    		
+	    		    		
+	    		//VIDEO MORE DATA
+	    		ZDDate publishDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("published").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+	    		ZDDate updatedDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("updated").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
+	    		
+	    		int durationInSeconds = eachEntry.getJSONObject("media$group").getJSONObject("yt$duration").getInt("seconds");
+	    		int playQt = eachEntry.getJSONObject("yt$statistics").getInt("viewCount");
+	    		int likesQt = eachEntry.getJSONObject("yt$rating").getInt("numLikes");
+	    		int dislikesQt = eachEntry.getJSONObject("yt$rating").getInt("numDislikes");
+	    		
+	    		
+	    		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
+	    		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);
+	    		xVideo.setupAuthor(xUniqueIdentifier, xAuthor, xAuthorUri);
+	    		
+		    	resultList.add(xVideo);
+	    	}
+	    	
+	    	
+	    	
+	    	Log.d(TAG, "YTVideoList: Size = " + resultList.size());
+	    	activity.onRequestCompleted(resultList);
+    	
+    	}
+    	catch(JSONException ex) {
+    		ex.printStackTrace();
+    	}
+    	catch(Exception ex) {
+    		
+    		throw new RuntimeException(ex);
+    	}
     }
 
 

@@ -35,9 +35,9 @@ public class YouTubeApi {
 		StringBuilder sb = new StringBuilder();
 		
 		
-		sb.append("https://gdata.youtube.com/feeds/api/users/");
+		sb.append("https://gdata.youtube.com/feeds/api/playlists/");
 		sb.append(playlistIdentifier);
-		sb.append("/playlists?v=2&alt=json");
+		sb.append("?v=2&alt=json");
 	
 		return sb.toString();
 	}
