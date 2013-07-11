@@ -41,7 +41,8 @@ public class YTPlaylist {
     private ZDDate mUpdatedDate = null;
     
     
-    //private String
+    private String mPlaylistThumbnail = null;
+    private String mPlaylistThumbnailAlt = null;
     
     //
     private List<YTVideo> mVideosList = null;
@@ -118,10 +119,47 @@ public class YTPlaylist {
 	    		ZDDate updatedDate = new ZDDate(ZDDate.BuildYouTubeDate(eachEntry.getJSONObject("updated").getString("$t")), ZDDate.FORMAT_DATE_HOUR_MIN_SS);
 	    		//ZDDate updatedDate = new ZDDate(eachEntry.getJSONObject("updated").getString("$t"), "yyyy-MM-dd HH:mm:ss.SSS ");
 	    		
-	    		Log.d(TAG, publishDate.toString());
+	    		
+	    		//
+	    		JSONObject mg = eachEntry.getJSONObject("media$group");
+	    		String thumbnail = "";
+	    		String thumbnailAlt = "";
+	    		
+	    		if(mg.names().length() == 1) {
+	    			
+	    			//do nothing
+	    		}
+	    		else {
+	    		
+		    		JSONArray thumbnailsArray = mg.getJSONArray("media$thumbnail");
+		    		
+		    		
+		    		for(int j = 0; j < thumbnailsArray.length(); j++) {
+		    			
+		    			JSONObject xThumbnail= thumbnailsArray.getJSONObject(j);
+		    			
+		    			int theHeight = xThumbnail.getInt("height");
+		    			int theWidth = xThumbnail.getInt("width");
+		    			
+		    			if(j == 0) {
+		    				
+		    				thumbnail = xThumbnail.getString("url");
+		    			}
+		    			
+		    			if(theHeight == 90 && theWidth == 120) {
+		    				
+		    				thumbnailAlt = xThumbnail.getString("url");
+		    			}
+		    		}
+		    		
+		    		
+		    		Log.d(TAG, thumbnail);
+		    		Log.d(TAG, thumbnailAlt);
+	    		}
 	    		
 	    		xPlayList.setupPlaylist(xIdentifier, xTitle, xSummary, xUri);
 	    		xPlayList.setupPlaylistSettings(videoQuantity, publishDate, updatedDate);
+	    		xPlayList.setupThumbnails(thumbnail, thumbnailAlt);
 	    		
 		    	resultList.add(xPlayList);
 	    	}
@@ -162,6 +200,19 @@ public class YTPlaylist {
     	this.mVideoQuantity = videoQuantity;
     	this.mPublishDate = publishDate;
     	this.mUpdatedDate = updatedDate;
+    }
+    
+    public void setupThumbnails(String thumbnail, String thumbnailAlt) {
+    	
+    	if(thumbnail != null) {
+    		
+    		this.mPlaylistThumbnail = thumbnail;
+    	}
+    	
+    	if(thumbnailAlt != null) {
+    		
+    		this.mPlaylistThumbnailAlt = thumbnailAlt;
+    	}
     }
     
     public void addVideo(YTVideo video) {
@@ -208,6 +259,15 @@ public class YTPlaylist {
 		return mUpdatedDate;
 	}
 
+	public String playlistThumbnail() {
+		return mPlaylistThumbnail;
+	}
+
+	public String playlistThumbnailAlt() {
+		return mPlaylistThumbnailAlt;
+	}
+
+	
 
 
     //-----------------Private------------------

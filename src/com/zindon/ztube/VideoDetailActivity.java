@@ -161,7 +161,22 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		viewAuthor.setText(theVideo.author());
 		
 		TextView viewPublishDate = (TextView) findViewById(R.id.textView_vdetail_date);
-		viewPublishDate.setText(theVideo.publishDate().toString(ZDDate.FORMAT_ONLY_DATE));
+		viewPublishDate.setText("Data Criação: " + theVideo.publishDate().toString(ZDDate.FORMAT_ONLY_DATE));
+		
+		TextView viewDescription = (TextView) findViewById(R.id.textView_vdetail_description);
+		viewDescription.setText(theVideo.description());
+		
+		TextView viewQT = (TextView) findViewById(R.id.textView_vdetail_qt);
+		viewQT.setText("" + theVideo.playTimesQuantity());
+		
+		TextView viewLike = (TextView) findViewById(R.id.textView_vdetail_like);
+		viewLike.setText("" + theVideo.likesQuantity());
+		
+		TextView viewDislike = (TextView) findViewById(R.id.textView_vdetail_dislike);
+		viewDislike.setText("" + theVideo.dislikesQuantity());
+		
+		TextView viewVideoDuration = (TextView) findViewById(R.id.textView_vdetail_videoduration);
+		viewVideoDuration.setText("Duração: " + ZDDate.printSecondsAsTime(theVideo.durationInSeconds()));
 	}
 	
 	//Para o ASYNC

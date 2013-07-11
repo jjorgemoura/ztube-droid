@@ -1,6 +1,13 @@
 package com.zindon.ztube.application;
 
+import java.io.File;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
 import android.app.Application;
+import android.util.Log;
 
 public class YTApplication extends Application {
 
@@ -19,7 +26,23 @@ public class YTApplication extends Application {
 	// ----------------------CONSTRUCTORS---------------------
 
  	// ----------------------STATIC METHODS---------------------
-	
+	@Override
+	public void onCreate() {
+		
+		super.onCreate();
+		
+		
+		File fileCacheUtils = StorageUtils.getCacheDirectory(getApplicationContext());
+		Log.d(TAG, "FILECACHE" + fileCacheUtils.getAbsolutePath());
+		
+		
+		// Create global configuration and initialize ImageLoader with this configuration
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+            .build();
+        
+        ImageLoader.getInstance().init(config);
+		
+	}
 		
  	// ----------------------PUBLIC METHODS - INTERFACE--------------------
 	 	

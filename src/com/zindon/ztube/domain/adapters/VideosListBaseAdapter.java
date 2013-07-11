@@ -2,6 +2,8 @@ package com.zindon.ztube.domain.adapters;
 
 import java.util.List;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zindon.ztube.R;
 import com.zindon.ztube.domain.YTVideo;
 import com.zindon.ztube.domain.uidto.VideoDTO;
@@ -96,7 +98,13 @@ public class VideosListBaseAdapter extends BaseAdapter {
 		itemVideo.getmVideoAuthor().setText(this.theItems.get(position).author());
 		//itemPlaylist.getmPlaylistThumbnail();
 		
- 
+		
+		//Load da imagem
+ 		DisplayImageOptions options = new DisplayImageOptions.Builder()
+ 			.build();
+ 		
+ 		ImageLoader.getInstance().displayImage(theItems.get(position).videoThumbnail(), itemVideo.getmVideoThumbnail(), options);
+ 		
 		return convertView;
 	}
 	

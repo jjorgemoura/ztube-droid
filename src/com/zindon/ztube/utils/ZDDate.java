@@ -51,6 +51,37 @@ public class ZDDate extends GregorianCalendar {
     	return sb.toString();
     } 
     
+    public static String printSecondsAsTime(int seconds) {
+    	
+    	StringBuilder sb = new StringBuilder();
+    	
+    	int min = seconds / 60;
+    	int secs = seconds % 60;
+    	
+    	if(min < 10) {
+    		
+    		sb.append("0" + min);
+    	}
+    	else {
+    		
+    		sb.append(min);
+    	}
+    	
+    	
+    	sb.append(":");
+    	
+    	if(secs < 10) {
+    		
+    		sb.append("0" + secs);
+    	}
+    	else {
+    		
+    		sb.append(secs);
+    	}
+
+    	return sb.toString();
+    }
+    
     
     private String mDefaultFormat = ZDDate.FORMAT_ONLY_DATE;
     

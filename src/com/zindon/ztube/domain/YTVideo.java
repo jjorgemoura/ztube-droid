@@ -45,6 +45,8 @@ public class YTVideo {
     
 
     //
+    private String mVideoThumbnail = null;
+    private String mVideoThumbnailAlt = null;
     
     
     //video
@@ -193,9 +195,36 @@ public class YTVideo {
 	    		int dislikesQt = eachEntry.getJSONObject("yt$rating").getInt("numDislikes");
 	    		
 	    		
+	    		//
+	    		JSONArray thumbnailsArray = eachEntry.getJSONObject("media$group").getJSONArray("media$thumbnail");
+	    		String thumbnail = "";
+	    		String thumbnailAlt = "";
+	    		
+	    		for(int j = 0; j < thumbnailsArray.length(); j++) {
+	    			
+	    			JSONObject xThumbnail= thumbnailsArray.getJSONObject(j);
+	    			
+	    			int theHeight = xThumbnail.getInt("height");
+	    			int theWidth = xThumbnail.getInt("width");
+	    			
+	    			if(j == 0) {
+	    				
+	    				thumbnail = xThumbnail.getString("url");
+	    			}
+	    			
+	    			if(theHeight == 90 && theWidth == 120) {
+	    				
+	    				thumbnailAlt = xThumbnail.getString("url");
+	    			}
+	    		}
+	    		
+	    		Log.d(TAG, thumbnail);
+	    		Log.d(TAG, thumbnailAlt);
+	    		
 	    		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
 	    		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);
 	    		xVideo.setupAuthor(xUniqueIdentifier, xAuthor, xAuthorUri);
+	    		xVideo.setupThumbnails(thumbnail, thumbnailAlt);
 	    		
 		    	resultList.add(xVideo);
 	    	}
@@ -252,10 +281,37 @@ public class YTVideo {
     		int dislikesQt = eachEntry.getJSONObject("yt$rating").getInt("numDislikes");
     		
     		
+    		
+    		//
+    		JSONArray thumbnailsArray = eachEntry.getJSONObject("media$group").getJSONArray("media$thumbnail");
+    		String thumbnail = "";
+    		String thumbnailAlt = "";
+    		
+    		for(int j = 0; j < thumbnailsArray.length(); j++) {
+    			
+    			JSONObject xThumbnail= thumbnailsArray.getJSONObject(j);
+    			
+    			int theHeight = xThumbnail.getInt("height");
+    			int theWidth = xThumbnail.getInt("width");
+    			
+    			if(j == 0) {
+    				
+    				thumbnail = xThumbnail.getString("url");
+    			}
+    			
+    			if(theHeight == 90 && theWidth == 120) {
+    				
+    				thumbnailAlt = xThumbnail.getString("url");
+    			}
+    		}
+    		
+    		Log.d(TAG, thumbnail);
+    		Log.d(TAG, thumbnailAlt);
+    		
     		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
     		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);
     		xVideo.setupAuthor(xUniqueIdentifier, xAuthor, xAuthorUri);
-    		
+    		xVideo.setupThumbnails(thumbnail, thumbnailAlt);
 	    	
     	
 	    	
@@ -299,6 +355,19 @@ public class YTVideo {
     	this.mDislikesQuantity = dislikesQt;
     }
 
+    public void setupThumbnails(String thumbnail, String thumbnailAlt) {
+    	
+    	if(thumbnail != null) {
+    		
+    		this.mVideoThumbnail = thumbnail;
+    	}
+    	
+    	if(thumbnailAlt != null) {
+    		
+    		this.mVideoThumbnailAlt = thumbnailAlt;
+    	}
+    }
+    
 
 	public String videoIdentifier() {
 		return mVideoIdentifier;
@@ -350,6 +419,14 @@ public class YTVideo {
 
 	public int dislikesQuantity() {
 		return mDislikesQuantity;
+	}
+
+	public String videoThumbnail() {
+		return mVideoThumbnail;
+	}
+
+	public String videoThumbnailAlt() {
+		return mVideoThumbnailAlt;
 	}
 
 

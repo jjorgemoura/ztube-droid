@@ -14,13 +14,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zindon.ztube.application.YTApplication;
-import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTVideo;
-import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
 import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 

@@ -2,6 +2,8 @@ package com.zindon.ztube.domain.adapters;
 
 import java.util.List;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zindon.ztube.R;
 import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.uidto.PlaylistDTO;
@@ -110,6 +112,14 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
 		
 		itemPlaylist.getmPlaylistQt().setText(videoQT);;
 		
+		
+		//Load da imagem
+ 		DisplayImageOptions options = new DisplayImageOptions.Builder()
+ 			.build();
+ 		
+ 		ImageLoader.getInstance().displayImage(theItems.get(position).playlistThumbnail(), itemPlaylist.getmPlaylistThumbnail(), options);
+ 		
+ 		
 		
  
 		return convertView;
