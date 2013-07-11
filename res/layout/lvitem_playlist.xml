@@ -21,7 +21,7 @@
         android:layout_alignTop="@+id/imageView_pl_thumbnail"
         android:layout_toRightOf="@+id/imageView_pl_thumbnail"
         android:text="Playlist Title"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_pl_sumary"

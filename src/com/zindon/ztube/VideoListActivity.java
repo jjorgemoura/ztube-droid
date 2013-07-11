@@ -4,9 +4,7 @@ package com.zindon.ztube;
 import java.util.List;
 
 import com.zindon.ztube.application.YTApplication;
-import com.zindon.ztube.domain.YTPlaylist;
 import com.zindon.ztube.domain.YTVideo;
-import com.zindon.ztube.domain.adapters.PlaylistsListBaseAdapter;
 import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 

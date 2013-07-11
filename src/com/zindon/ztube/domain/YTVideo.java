@@ -146,13 +146,6 @@ public class YTVideo {
 	    	
 	    	JSONObject mainObject = jsonParser.getJSONObject("feed");
 	    	
-	    	//AUTHOR
-	    	JSONArray authorJsonArray = mainObject.getJSONArray("author");
-	    	
-	    	String xUniqueIdentifier = authorJsonArray.getJSONObject(0).getJSONObject("yt$userId").getString("$t");
-			String xAuthor = authorJsonArray.getJSONObject(0).getJSONObject("name").getString("$t");
-			String xAuthorUri = authorJsonArray.getJSONObject(0).getJSONObject("uri").getString("$t");
-	    	
 	    	
 	    	
 	    	
@@ -163,6 +156,24 @@ public class YTVideo {
 	    		JSONObject eachEntry = jsonArrayEntry.getJSONObject(i);
 	    		
 	    		xVideo = new YTVideo();
+	    		
+	    		
+	    		
+	    		//AUTHOR
+		    	//JSONArray authorJsonArray = eachEntry.getJSONArray("author");
+		    	
+//		    	String xUniqueIdentifier = authorJsonArray.getJSONObject(0).getJSONObject("yt$userId").getString("$t");
+//				String xAuthor = authorJsonArray.getJSONObject(0).getJSONObject("name").getString("$t");
+//				String xAuthorUri = authorJsonArray.getJSONObject(0).getJSONObject("uri").getString("$t");
+		    	
+	    		
+	    		JSONArray originalAuthorJsonArray = eachEntry.getJSONObject("media$group").getJSONArray("media$credit");
+	    		
+				String xUniqueIdentifier = "";
+				String xAuthor = originalAuthorJsonArray.getJSONObject(0).getString("$t");
+				String xAuthorUri = "";
+		    	
+		    	
 	    		
 	    		
 	    		//VIDEO

@@ -41,6 +41,7 @@ public class RequestAsyncTask extends AsyncTask<String, Void, String> {
 			url = s;
 		} 
 		
+		Log.d(TAG, url);
 		String result = RestHttpClient.getRequest(url, null);
 
 		return result;

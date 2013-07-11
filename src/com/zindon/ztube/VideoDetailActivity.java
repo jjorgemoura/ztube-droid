@@ -1,7 +1,5 @@
 package com.zindon.ztube;
 
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +14,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.zindon.ztube.application.YTApplication;
 import com.zindon.ztube.domain.YTVideo;
+import com.zindon.ztube.utils.ZDDate;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, OnAppRequest {
@@ -162,7 +161,7 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		viewAuthor.setText(theVideo.author());
 		
 		TextView viewPublishDate = (TextView) findViewById(R.id.textView_vdetail_date);
-		viewPublishDate.setText(theVideo.publishDate().toString());
+		viewPublishDate.setText(theVideo.publishDate().toString(ZDDate.FORMAT_ONLY_DATE));
 	}
 	
 	//Para o ASYNC

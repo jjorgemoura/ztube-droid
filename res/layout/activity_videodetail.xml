@@ -18,20 +18,37 @@
 
     <TextView
         android:id="@+id/textView_vdetail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="" 
+        android:textSize="18sp" 
+        android:background="@color/zColorPumpkin"/>
 
-    <TextView
-        android:id="@+id/textView_vdetail_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="50dp"
+    	android:orientation="horizontal" 
+    	android:padding="10dp"
+    	android:background="@color/zColorSunFlower">
+        
+        
+        <TextView
+	        android:id="@+id/textView_vdetail_author"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/textView_vdetail_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+    	<TextView
+	        android:id="@+id/textView_vdetail_date"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textSize="10sp"
+	        android:gravity="right" />
+    </LinearLayout>
+    
+    
 
 </LinearLayout>

@@ -104,8 +104,8 @@ public class YTPlaylist {
 				String xTitle = eachEntry.getJSONObject("title").getString("$t");
 				String xUri = eachEntry.getJSONObject("id").getString("$t");
 				String xIdentifier = eachEntry.getJSONObject("yt$playlistId").getString("$t");
-				//String xSummary = eachEntry.getJSONObject("yt$description").toString();
-	    		String xSummary = "sdfsdfsdf s";
+				String xSummary = eachEntry.getJSONObject("summary").getString("$t");
+	    		//String xSummary = "sdfsdfsdf s";
 	    		
 	    		Log.d(TAG, eachEntry.getString("published"));
 	    		
