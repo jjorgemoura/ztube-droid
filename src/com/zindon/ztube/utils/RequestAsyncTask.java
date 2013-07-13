@@ -3,9 +3,19 @@ package com.zindon.ztube.utils;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 
+/**
+ * 
+ * This class is the AsyncTask Manager. Used to communicate with the Yuotube API
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class RequestAsyncTask extends AsyncTask<String, Void, String> {
 	
 	

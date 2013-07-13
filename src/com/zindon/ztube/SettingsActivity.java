@@ -29,7 +29,7 @@ import android.widget.Toast;
  * 
  * @author jorge
  * @version 1
- * @since API 1
+ * @target API 1
  *
  */
 public class SettingsActivity extends Activity implements OnClickListener {

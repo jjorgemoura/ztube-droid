@@ -7,6 +7,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * 
+ * This class is a Date Util class that manages data through the extends of Gregorian Calendar.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class ZDDate extends GregorianCalendar {
 
 	//--------------------------VARS------------------------------------

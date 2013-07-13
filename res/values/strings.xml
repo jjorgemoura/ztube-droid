@@ -12,7 +12,7 @@
 
     <string name="alertdialog_title">Internet Connectivity</string>
     <string name="alertdialog_msg">There is no Internet Connection available in this device right now.</string>
-    <string name="alertdialog_ok">ok</string>
+    <string name="alertdialog_ok">OK</string>
     <string name="alertdialog_settings">settings</string>
     
     <string name="btn_saveuser">Save UserID</string>

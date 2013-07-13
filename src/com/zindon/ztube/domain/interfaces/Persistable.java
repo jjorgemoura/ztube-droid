@@ -3,6 +3,7 @@ package com.zindon.ztube.domain.interfaces;
 
 /**
  * This Interface define the required methods necessary to persist data entities into the persistence layer.
+ * So far, this Interface is not needed because this version don't use DB yet.
  * 
  * @author jorge
  *

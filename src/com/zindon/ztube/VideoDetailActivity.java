@@ -2,10 +2,8 @@ package com.zindon.ztube;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
@@ -19,6 +17,17 @@ import com.zindon.ztube.domain.YTVideo;
 import com.zindon.ztube.utils.ZDDate;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
+/**
+ * 
+ * Activity responsible with the Video Detail Activity. This activity plays the video selected and shows some informations.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, OnAppRequest {
 
 	// ----------------------VARS---------------------

@@ -5,6 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+/**
+ * 
+ * This class is used to test the Network Connectivity. Contains only one method, a isConnected.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class NetworkConnectivity {
 
 	// ----------------------VARS---------------------

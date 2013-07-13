@@ -9,6 +9,17 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 import android.app.Application;
 import android.util.Log;
 
+/**
+ * 
+ * This class extends the Application context class. Use this class to store global static data, such as Google Developer Key, key identifiers for change parameters between activities, indication about use dummy data or not, among others.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class YTApplication extends Application {
 
 	// ----------------------VARS---------------------
@@ -48,21 +59,41 @@ public class YTApplication extends Application {
 	 	
 	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
+	/**
+	 * Indicates if the List will operate will dummy data or real data. 
+	 * 
+	 * @return boolean indicating if will use dummy data or not.
+	 */
 	public boolean useDummyData() {
 		
 		return mDummyData;
 	}
 
 
+	/**
+	 * The Playlist Key for use when exchange info between activities.
+	 * 
+	 * @return A key (String).
+	 */
 	public String playlistKey() {
 		return mPlaylistKey;
 	}
 
 
+	/**
+	 * The Video Key for use when exchange info between activities.
+	 * 
+	 * @return A key (String).
+	 */
 	public String videoKey() {
 		return mVideoKey;
 	}
 	
+	/**
+	 * Obtain the Google Developer Key for use with the Youtube API. 
+	 * 
+	 * @return The Google Developer Key.
+	 */
 	public String developerKey() {
 		return mDEVELOPER_KEY;
 	}

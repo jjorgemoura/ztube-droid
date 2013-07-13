@@ -3,6 +3,18 @@ package com.zindon.ztube.domain.uidto;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+/**
+ * 
+ * This class is the Datasource for the Base Adapter of Playlists List View.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class PlaylistDTO {
 
 	// ----------------------VARS---------------------

@@ -25,6 +25,16 @@ import org.apache.http.protocol.HttpContext;
 
 import android.util.Log;
 
+/**
+ * 
+ * This class is used to make HTTP Requests. The is the same class that was presented in the IspGaya Android formation.
+ *  
+ * 
+ * @author sergio
+ * @version 1
+ * @target API 1
+ *
+ */
 public class RestHttpClient {
 
 	protected static final String TAG = "RestClientUtils";

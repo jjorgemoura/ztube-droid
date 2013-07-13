@@ -20,7 +20,6 @@ import com.zindon.ztube.utils.ZDDate;
  * This class provides a set of static methods with dummy data so that the application could function without the API YouTube being operational.
  * 
  * @author jorge
- * @version %I%, %G%
  * @since API 1
  * 
  */

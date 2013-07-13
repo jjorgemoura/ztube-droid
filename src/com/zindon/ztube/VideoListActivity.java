@@ -20,6 +20,17 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 
+/**
+ * 
+ * Activity responsible with the VideoList Activity. This activity shows all Videos in the selected playlist.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class VideoListActivity extends Activity implements OnItemClickListener, OnAppRequest {
 
 	// ----------------------VARS---------------------

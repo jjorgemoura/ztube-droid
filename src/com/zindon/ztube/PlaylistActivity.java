@@ -28,7 +28,7 @@ import android.widget.AdapterView.OnItemClickListener;
  * 
  * @author jorge
  * @version 1
- * @since API 1
+ * @target API 1
  *
  */
 public class PlaylistActivity extends Activity implements OnItemClickListener, OnAppRequest {

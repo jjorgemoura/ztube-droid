@@ -2,6 +2,17 @@ package com.zindon.ztube.utils;
 
 
 
+/**
+ * 
+ * This class is the YuoTube API Manager, where is build the Uri that will be call.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @target API 1
+ *
+ */
 public class YouTubeApi {
 
 	// ----------------------VARS---------------------
