@@ -11,6 +11,7 @@ import com.zindon.ztube.utils.interfaces.OnAppRequest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,7 +25,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Main Activity";
 	
-	 		
+	protected Context mContext; 
 	private List<YTPlaylist> mTheItems = null;
 	
 	
@@ -43,12 +44,20 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 //		Log.d(TAG, "Playlist: Create");
 		
 		//Buscar contexto da App
+		mContext = getApplicationContext(); 
 		YTApplication ytApp = (YTApplication)getApplication();
 		
 		
 		//Read UserIdentifier from SharedPreferences
 		String userIdentifier;
-		userIdentifier = "condorouro";
+		
+		
+		userIdentifier = this.getDataFromSharedPrefs(getString(R.string.sharedpreference_hash_pref1));
+		
+		if(userIdentifier == null) {
+			
+			userIdentifier = "condorouro";
+		}
 		
 		
 		//List View
@@ -146,6 +155,19 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	
 	// ----------------------PRIVATE METHODS---------------------
+  	private String getDataFromSharedPrefs(String key) {
+		
+		String result = null;
+		
+		String spFilename = getString(R.string.sharedpreference_privatefile);
+		
+		//SharedPreferences myPreferences = this.getPreferences(Context.MODE_PRIVATE);
+		SharedPreferences mySharedPreferences = this.mContext.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
+		
+		result = mySharedPreferences.getString(key, "");
+		
+		return result;
+	}
 	
 
 	// ----------------------GETTERS and SETTERS---------------------

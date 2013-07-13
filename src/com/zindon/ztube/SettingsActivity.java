@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class SettingsActivity extends Activity implements OnClickListener {
@@ -38,6 +39,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+		
 		
 		
 		Button myButtonAddUser = (Button) findViewById(R.id.button_saveuser);
@@ -82,7 +84,12 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		switch (id) {
 		case R.id.button_saveuser:
 		
-			this.saveDataOnSharedPrefs(getString(R.string.sharedpreference_hash_pref1), "condorouro");
+			EditText editViewUser = (EditText) findViewById(R.id.editText_user);
+			
+			String userIdToSave = editViewUser.getText().toString();
+			
+			//this.saveDataOnSharedPrefs(getString(R.string.sharedpreference_hash_pref1), "condorouro");
+			this.saveDataOnSharedPrefs(getString(R.string.sharedpreference_hash_pref1), userIdToSave);
 			spText = "user saved";
 			
 			break;

@@ -3,16 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical|center_horizontal" >
-    
-    
-    <Button
-        android:id="@+id/button_saveuser"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:textSize="15sp"
-        android:text="@string/btn_saveuser" />
+    android:gravity="center_vertical|center_horizontal" 
+    android:background="@color/zColorWetAsphalt">
 
+   
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal"
+    android:background="@color/zColorClouds"
+    android:layout_margin="10dp" >
+    
+        
+	    <EditText
+	        android:id="@+id/editText_user"
+	        android:layout_width="200dp"
+	        android:layout_height="wrap_content"
+	        android:ems="10" 
+	        android:hint="@string/youtube_user_hint">
+	
+	        <requestFocus />
+	    </EditText>
+	    
+	    <Button
+	        android:id="@+id/button_saveuser"
+	        android:layout_width="200dp"
+	        android:layout_height="60dp"
+	        android:textSize="15sp"
+	        android:text="@string/btn_saveuser" 
+	        android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical|center_horizontal"
+    android:background="@color/zColorClouds" 
+    android:layout_margin="10dp">
+	    
      <Button
         android:id="@+id/button_adddummyhist"
         android:layout_width="200dp"
@@ -26,6 +57,6 @@
         android:layout_height="60dp"
         android:textSize="15sp"
         android:text="@string/btn_delhistory" />
-    
+    </LinearLayout>
 
 </LinearLayout>
