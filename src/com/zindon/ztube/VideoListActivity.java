@@ -183,7 +183,7 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		//Start Activity
 		Intent intent = new Intent(context, VideoDetailActivity.class);
 		intent.putExtra(ytApp.videoKey(), mTheItems.get(position).videoIdentifier());
-		//intent.putExtra(ytApp.playlistKey(),this.mPlaylistIdentifier);
+		intent.putExtra(ytApp.playlistKey(),this.mPlaylistIdentifier);
 		startActivity(intent);
 	}
 	

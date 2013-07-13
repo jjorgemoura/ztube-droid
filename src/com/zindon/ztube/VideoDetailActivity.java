@@ -53,7 +53,7 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		YTApplication ytApp = (YTApplication)getApplication();
 		
 		this.mVideoIdentifier = intent.getStringExtra(ytApp.videoKey());
-		//this.mPlaylistIdentifier = intent.getStringExtra(ytApp.playlistKey());
+		this.mPlaylistIdentifier = intent.getStringExtra(ytApp.playlistKey());
 		
 		Log.d(TAG, "VIDEO IDENTIFIER" + mVideoIdentifier);
 		
@@ -66,6 +66,10 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		//UpNavigation
+		this.getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		return true;
 	}
 
@@ -116,21 +120,29 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 	
 	
 	//---------------------
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//	    
-//		Log.d(TAG, "onOptionsItemSelected: itemID: " + item.getItemId());
-//		
-//		switch (item.getItemId()) {
-//	    
-//	    case android.R.id.home:
-//	        
-//	    	NavUtils.navigateUpFromSameTask(this);
-//	        Log.d(TAG, "onOptionsItemSelected: R HOME");
-//	        return true;
-//	    }
-//	    return super.onOptionsItemSelected(item);
-//	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    
+		Log.d(TAG, "onOptionsItemSelected: itemID: " + item.getItemId());
+		
+		switch (item.getItemId()) {
+	    
+	    case android.R.id.home:
+	        
+	    	
+	    	YTApplication ytApp = (YTApplication)getApplication();
+			
+	    	Intent intent = new Intent(getApplicationContext(), VideoListActivity.class);
+	    	intent.putExtra(ytApp.playlistKey(), this.mPlaylistIdentifier);
+	    	
+	    	NavUtils.navigateUpFromSameTask(this);
+	    	//NavUtils.navigateUpTo(this, VideoListActivity.class);
+	    	Log.d(TAG, "PARENT: " + NavUtils.getParentActivityName(this));
+	        Log.d(TAG, "onOptionsItemSelected: R HOME");
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
+	}
 	
 	
 	@Override

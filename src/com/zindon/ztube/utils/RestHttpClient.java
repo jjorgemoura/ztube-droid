@@ -84,6 +84,7 @@ public class RestHttpClient {
 			keyValueParams = "?" + URLEncodedUtils.format(keyValuePairs, HTTP.UTF_8);
 
 		Log.d(TAG, "GET PARAMS: " + keyValueParams);
+		Log.d(TAG, "HTTP URI: " + url);
 
 		HttpClient httpclient = basicHttpClient();
 		HttpRequestBase httpreq = new HttpGet(url + keyValueParams);

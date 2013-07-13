@@ -20,7 +20,7 @@ public class YTApplication extends Application {
 	//private int mSplashScreenDuration = 3; 		//secs 
 	
 	private String mPlaylistKey = "playlist_key";
-	private String mVideoKey = "playlist_key";
+	private String mVideoKey = "video_key";
 	
 	
 	// ----------------------CONSTRUCTORS---------------------
