@@ -20,9 +20,23 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * 
+ * Activity responsible with the Playlist Activity. This activity shows a ListView will all playlists for the userID stored in Shared Preferences.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class PlaylistActivity extends Activity implements OnItemClickListener, OnAppRequest {
 
 	// ----------------------VARS---------------------
+	/**
+	 * 
+	 */
 	protected static final String TAG = "Main Activity";
 	
 	protected Context mContext; 

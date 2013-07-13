@@ -7,6 +7,17 @@ import android.util.Log;
 import android.view.Menu;
 
 
+/**
+ * 
+ * Activity responsible with the History Video Activity.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class SplashActivity extends Activity {
 
 	// ----------------------VARS---------------------

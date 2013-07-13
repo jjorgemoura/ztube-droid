@@ -23,17 +23,40 @@ import com.zindon.ztube.domain.YTVideo;
 import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
 import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
+/**
+ * 
+ * Activity responsible with the History Video Activity.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class HistoryVideosActivity extends Activity implements OnItemClickListener, OnAppRequest {
 
 	// ----------------------VARS---------------------
+	/**
+	 * 
+	 */
 	protected static final String TAG = "History Videos Activity";
 	
+	/**
+	 * 
+	 */
 	protected Context mContext; 
 	
+	/**
+	 * 
+	 */
 	private List<YTVideo> mTheItems = null;
 	 		
 	
 	// ----------------------CONSTRUCTORS---------------------
+	/**
+	 * Default Constructor
+	 */
 	public HistoryVideosActivity() {
 		
 		
@@ -44,6 +67,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		
  	// ----------------------PUBLIC METHODS - INTERFACE--------------------
 	//-----------Activity Lifecycle-----------
+	/**
+	 * 
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,6 +103,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
  		theListView.setOnItemClickListener(this);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -85,7 +114,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	}
 
 	
-	
+	/**
+	 * 
+	 */
 	@Override
 	protected void onStart() {
 		
@@ -93,6 +124,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		//Log.d(TAG, "method: onStart");
 	}
     
+	/**
+	 * 
+	 */
 	@Override
     protected void onRestart() {
 		
@@ -100,6 +134,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		//Log.i(TAG, "method: onRestart");
 	}
 
+	/**
+	 * 
+	 */
 	@Override
     protected void onResume() {
 		
@@ -107,6 +144,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		//Log.i(TAG, "method: onResume");
 	}
 
+	/**
+	 * 
+	 */
 	@Override
     protected void onPause() {
 		
@@ -114,6 +154,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		//Log.i(TAG, "method: onPause");
 	}
 
+	/**
+	 * 
+	 */
 	@Override
     protected void onStop() {
 		
@@ -121,6 +164,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		//Log.i(TAG, "method: onStop");
 	}
 
+	/**
+	 * 
+	 */
 	@Override
     protected void onDestroy() {
 		
@@ -131,6 +177,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	
 	
 	
+	/**
+	 * 
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		
@@ -157,6 +206,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	
 	// ----------------------PUBLIC METHODS - NORMAL---------------------
 	//Para o CALLBACK
+	/**
+	 * 
+	 */
 	public void onRequestCompleted(Object result) {
 		
 		//List<YTVideo> myResultList = null;
@@ -182,6 +234,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	}
 	
 	//Para o ASYNC
+	/**
+	 * 
+	 */
   	public void onAsyncRequestCompleted(String result) {
   		
   		//Log.d(TAG, "onAsyncRequestCompleted");
@@ -192,7 +247,12 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	  	
 	
 	// ----------------------PRIVATE METHODS---------------------
-	private String readFileFromInternalStorage(String fileName) {
+	/**
+	 * 
+	 * @param fileName
+	 * @return
+	 */
+  	private String readFileFromInternalStorage(String fileName) {
 		
 		String result = "";
 		

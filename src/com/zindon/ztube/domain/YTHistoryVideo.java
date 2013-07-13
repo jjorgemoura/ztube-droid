@@ -8,6 +8,16 @@ import android.util.Log;
 import com.zindon.ztube.domain.interfaces.Persistable;
 import com.zindon.ztube.utils.ZDDate;
 
+/**
+ * This class models a Youtube History Video. 
+ * 
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class YTHistoryVideo extends YTVideo implements Persistable {
 
 	private static final String TAG = "YTHistoryVideo";

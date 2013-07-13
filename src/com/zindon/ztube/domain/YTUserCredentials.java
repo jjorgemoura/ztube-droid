@@ -4,10 +4,12 @@ import com.zindon.ztube.domain.interfaces.Persistable;
 
 
 /**
+ * This class models a Youtube Credentials. 
+ * 
  * Created by jorge on 6/17/13.
  * 
  * @author jorge
- * @version %I%, %G%
+ * @version 1
  * @since API 1
  */
 public class YTUserCredentials implements Persistable {

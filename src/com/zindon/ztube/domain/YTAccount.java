@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This class models a Youtube Account. 
+ * 
  * Created by jorge on 6/17/13.
  * 
  * @author jorge
- * @version %I%, %G%
+ * @version 1
  * @since API 1
  */
 public class YTAccount {

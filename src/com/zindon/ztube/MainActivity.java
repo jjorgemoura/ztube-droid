@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,13 +17,22 @@ import android.widget.Button;
 
 /**
  * 
+ * Activity responsible with the Main Activity of the software.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
  * @author jorge
+ * @version 1
+ * @since API 1
  *
  */
 public class MainActivity extends Activity implements OnClickListener {
 
 	
 	// ----------------------VARS---------------------
+	/**
+	 * 
+	 */
 	protected static final String TAG = "Main Activity";
 	 		
 	
@@ -35,6 +43,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		
  	// ----------------------PUBLIC METHODS - INTERFACE--------------------
 	//-----------Activity Lifecycle-----------
+	/**
+	 * 
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,6 +68,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		myButton_stt.setOnClickListener(this);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -65,7 +79,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	
-	
+	/**
+	 * 
+	 */
 	@Override
 	protected void onStart() {
 		

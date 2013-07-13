@@ -21,11 +21,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * 
+ * Activity responsible with the Settings Activity.
+ *  
+ * Created by jorge on 6/17/13.
+ * 
+ * @author jorge
+ * @version 1
+ * @since API 1
+ *
+ */
 public class SettingsActivity extends Activity implements OnClickListener {
 
 	// ----------------------VARS---------------------
+	/**
+	 * 
+	 */
 	protected static final String TAG = "Settings Activity";
 	 	
+	/**
+	 * 
+	 */
 	protected Context mContext; 
 	
 	// ----------------------CONSTRUCTORS---------------------
@@ -34,6 +51,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 		
  	// ----------------------PUBLIC METHODS - INTERFACE--------------------
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		

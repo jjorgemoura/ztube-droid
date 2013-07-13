@@ -16,10 +16,12 @@ import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 
 /**
+ * This class models a Youtube Video. 
+ * 
  * Created by jorge on 6/17/13.
  * 
  * @author jorge
- * @version %I%, %G%
+ * @version 1
  * @since API 1
  */
 public class YTVideo {
@@ -60,6 +62,9 @@ public class YTVideo {
 
 
     //-----------------Constructors------------------
+    /**
+     * Default Constructor.
+     */
     public YTVideo() {
 
 
