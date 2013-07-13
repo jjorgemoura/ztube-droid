@@ -67,8 +67,8 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		
-		//UpNavigation
-		this.getActionBar().setDisplayHomeAsUpEnabled(true);
+//		//UpNavigation
+//		this.getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		return true;
 	}
@@ -120,29 +120,29 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 	
 	
 	//---------------------
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    
-		Log.d(TAG, "onOptionsItemSelected: itemID: " + item.getItemId());
-		
-		switch (item.getItemId()) {
-	    
-	    case android.R.id.home:
-	        
-	    	
-	    	YTApplication ytApp = (YTApplication)getApplication();
-			
-	    	Intent intent = new Intent(getApplicationContext(), VideoListActivity.class);
-	    	intent.putExtra(ytApp.playlistKey(), this.mPlaylistIdentifier);
-	    	
-	    	NavUtils.navigateUpFromSameTask(this);
-	    	//NavUtils.navigateUpTo(this, VideoListActivity.class);
-	    	Log.d(TAG, "PARENT: " + NavUtils.getParentActivityName(this));
-	        Log.d(TAG, "onOptionsItemSelected: R HOME");
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//	    
+//		Log.d(TAG, "onOptionsItemSelected: itemID: " + item.getItemId());
+//		
+//		switch (item.getItemId()) {
+//	    
+//	    case android.R.id.home:
+//	        
+//	    	
+//	    	YTApplication ytApp = (YTApplication)getApplication();
+//			
+//	    	Intent intent = new Intent(getApplicationContext(), VideoListActivity.class);
+//	    	intent.putExtra(ytApp.playlistKey(), this.mPlaylistIdentifier);
+//	    	
+//	    	NavUtils.navigateUpFromSameTask(this);
+//	    	//NavUtils.navigateUpTo(this, VideoListActivity.class);
+//	    	Log.d(TAG, "PARENT: " + NavUtils.getParentActivityName(this));
+//	        Log.d(TAG, "onOptionsItemSelected: R HOME");
+//	        return true;
+//	    }
+//	    return super.onOptionsItemSelected(item);
+//	}
 	
 	
 	@Override
