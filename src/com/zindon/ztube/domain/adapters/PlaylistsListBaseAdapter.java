@@ -11,7 +11,6 @@ import com.zindon.ztube.domain.uidto.PlaylistDTO;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,18 +23,18 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Playlists List BaseAdapter";
 	 	
-	private List<YTPlaylist> theItems;
-	private LayoutInflater inflater;
+	private List<YTPlaylist> mTheItems;
+	private LayoutInflater mInflater;
 	
 	
 	// ----------------------CONSTRUCTORS---------------------
 	public PlaylistsListBaseAdapter(Activity activity, List<YTPlaylist>theItems) {
 		
-		Log.d(TAG, "INSTANCIATE StandardListBaseAdapter");
+//		Log.d(TAG, "INSTANCIATE StandardListBaseAdapter");
 		
 		//this.setupArrayString(itensQT);
-		this.theItems = theItems;
-		this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.mTheItems = theItems;
+		this.mInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 
@@ -47,21 +46,21 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		
-		Log.d(TAG, "getCount> " + this.theItems.size());
-		return theItems.size();
+//		Log.d(TAG, "getCount> " + this.mTheItems.size());
+		return mTheItems.size();
 	}
 
 	@Override
 	public Object getItem(int index) {
 
-		Log.d(TAG, "getItem");
-		return theItems.get(index);
+//		Log.d(TAG, "getItem");
+		return mTheItems.get(index);
 	}
 
 	@Override
 	public long getItemId(int indexID) {
 		
-		Log.d(TAG, "getItemID");
+//		Log.d(TAG, "getItemID");
 		
 		//o index que vou utilizar e a posicao do array
 		return indexID;
@@ -72,14 +71,14 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
 		
 		PlaylistDTO itemPlaylist;
 		
-		Log.d(TAG, "getVIew");
+//		Log.d(TAG, "getVIew");
 		
 		if(convertView == null) {
 			
 			itemPlaylist = new PlaylistDTO();
 			
 			//injeccao do layout (o schema do layout) no meu objecto PlaylistDTO
-			convertView = inflater.inflate(R.layout.lvitem_playlist, null);
+			convertView = mInflater.inflate(R.layout.lvitem_playlist, null);
 			
 			//Preset do meu objecto PlaylistDTO com os textos por defeito do schema do layout
 			itemPlaylist.setmPlaylistTitle((TextView)convertView.findViewById(R.id.textView_pl_title));
@@ -96,18 +95,18 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
 		
 		
 		//Agora sim, meto os textos correctos
-		itemPlaylist.getmPlaylistTitle().setText(this.theItems.get(position).title());
-		itemPlaylist.getmPlaylistSummary().setText(this.theItems.get(position).summary());
+		itemPlaylist.getmPlaylistTitle().setText(this.mTheItems.get(position).title());
+		itemPlaylist.getmPlaylistSummary().setText(this.mTheItems.get(position).summary());
 		//itemPlaylist.getmPlaylistThumbnail();
 		
 		String videoQT = "";
-		if(this.theItems.get(position).videoQuantity() == 1) {
+		if(this.mTheItems.get(position).videoQuantity() == 1) {
 			
 			videoQT = "1 video";
 		}
 		else {
 			
-			videoQT = this.theItems.get(position).videoQuantity() + " videos";
+			videoQT = this.mTheItems.get(position).videoQuantity() + " videos";
 		}
 		
 		itemPlaylist.getmPlaylistQt().setText(videoQT);;
@@ -117,7 +116,7 @@ public class PlaylistsListBaseAdapter extends BaseAdapter {
  		DisplayImageOptions options = new DisplayImageOptions.Builder()
  			.build();
  		
- 		ImageLoader.getInstance().displayImage(theItems.get(position).playlistThumbnail(), itemPlaylist.getmPlaylistThumbnail(), options);
+ 		ImageLoader.getInstance().displayImage(mTheItems.get(position).playlistThumbnail(), itemPlaylist.getmPlaylistThumbnail(), options);
  		
  		
 		

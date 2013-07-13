@@ -12,14 +12,14 @@ public class RequestAsyncTask extends AsyncTask<String, Void, String> {
 	//Vars
 	private static final String TAG = "RequestAsyncTask";
 	
-	private OnAppRequest onAppRequest;
+	private OnAppRequest mOnAppRequest;
 
 	
 	//Constructor
 	public RequestAsyncTask(OnAppRequest onAppRequest) {
 		super();
 
-		this.onAppRequest = onAppRequest;
+		this.mOnAppRequest = onAppRequest;
 	}
 
 	
@@ -41,7 +41,7 @@ public class RequestAsyncTask extends AsyncTask<String, Void, String> {
 			url = s;
 		} 
 		
-		Log.d(TAG, url);
+//		Log.d(TAG, url);
 		String result = RestHttpClient.getRequest(url, null);
 
 		return result;
@@ -50,9 +50,9 @@ public class RequestAsyncTask extends AsyncTask<String, Void, String> {
 	@Override
 	public void onPostExecute(String str) {
 		
-		Log.d(TAG, "onPostExecute: " + str);
+//		Log.d(TAG, "onPostExecute: " + str);
 		
-		onAppRequest.onAsyncRequestCompleted(str);
+		mOnAppRequest.onAsyncRequestCompleted(str);
 	}
 
 }

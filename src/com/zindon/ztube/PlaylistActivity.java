@@ -25,7 +25,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	protected static final String TAG = "Main Activity";
 	
 	 		
-	private List<YTPlaylist> theItems = null;
+	private List<YTPlaylist> mTheItems = null;
 	
 	
 	// ----------------------CONSTRUCTORS---------------------
@@ -40,7 +40,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_playlists);
 		
-		Log.d(TAG, "Playlist: Create");
+//		Log.d(TAG, "Playlist: Create");
 		
 		//Buscar contexto da App
 		YTApplication ytApp = (YTApplication)getApplication();
@@ -53,11 +53,11 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 		
 		//List View
 		//theItems = YTPlaylist.findByUserId("acxpt1");
-		theItems = YTPlaylist.findByUserId(userIdentifier, this, ytApp.useDummyData());
+		mTheItems = YTPlaylist.findByUserId(userIdentifier, this, ytApp.useDummyData());
 		
 		
 		//Instantiate the Base Adapter
-		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
+		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -89,10 +89,9 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		
+//		Log.d(TAG, "POSITION: " + position);
 		
-		Log.d(TAG, "POSITION: " + position);
-		
-		if(position > theItems.size()) {
+		if(position > mTheItems.size()) {
 			
 			Log.d(TAG, "LOADING PRESSED...");
 			return;
@@ -107,7 +106,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 		
 		//Start Activity
 		Intent intent = new Intent(context, VideoListActivity.class);
-		intent.putExtra(ytApp.playlistKey(), theItems.get(position).playlistIdentifier());
+		intent.putExtra(ytApp.playlistKey(), mTheItems.get(position).playlistIdentifier());
 		startActivity(intent);
 		
 	}
@@ -122,12 +121,12 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 		
 		if(result instanceof List) {
 			
-			theItems = (List<YTPlaylist>)result; 
-			Log.d(TAG, "List Size: " + theItems.size());
+			mTheItems = (List<YTPlaylist>)result; 
+//			Log.d(TAG, "List Size: " + theItems.size());
 		}
 			
 		//Instantiate the Base Adapter
-		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, theItems);
+		PlaylistsListBaseAdapter playlistBaseAdapter = new PlaylistsListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -138,8 +137,7 @@ public class PlaylistActivity extends Activity implements OnItemClickListener, O
 	//Para o ASYNC
   	public void onAsyncRequestCompleted(String result) {
   		
-  		Log.d(TAG, "onAsyncRequestCompleted");
-  		
+//  		Log.d(TAG, "onAsyncRequestCompleted");
   		//CharSequence text = "CALL BACK Async EVENT: " + result;
   		
   		YTPlaylist.buildList(result, this);	

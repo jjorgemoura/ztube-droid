@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.zindon.ztube.domain.data.DummyDataFactory;
 import com.zindon.ztube.utils.RequestAsyncTask;
 import com.zindon.ztube.utils.YouTubeApi;
@@ -88,7 +86,7 @@ public class YTVideo {
     	}
     	
     	
-    	Log.d(TAG, "YTVideo: Size = " + resultList.size());
+//    	Log.d(TAG, "YTVideo: Size = " + resultList.size());
     	
     	return resultList;
     }
@@ -218,8 +216,8 @@ public class YTVideo {
 	    			}
 	    		}
 	    		
-	    		Log.d(TAG, thumbnail);
-	    		Log.d(TAG, thumbnailAlt);
+//	    		Log.d(TAG, thumbnail);
+//	    		Log.d(TAG, thumbnailAlt);
 	    		
 	    		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
 	    		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);
@@ -231,7 +229,7 @@ public class YTVideo {
 	    	
 	    	
 	    	
-	    	Log.d(TAG, "YTVideoList: Size = " + resultList.size());
+//	    	Log.d(TAG, "YTVideoList: Size = " + resultList.size());
 	    	activity.onRequestCompleted(resultList);
     	
     	}
@@ -305,8 +303,8 @@ public class YTVideo {
     			}
     		}
     		
-    		Log.d(TAG, thumbnail);
-    		Log.d(TAG, thumbnailAlt);
+//    		Log.d(TAG, thumbnail);
+//    		Log.d(TAG, thumbnailAlt);
     		
     		xVideo.setupVideo(xVideoIdentifier, xTitle, xDescription, xVideoUri);
     		xVideo.setupVideoData(publishDate, updatedDate, durationInSeconds, playQt, likesQt, dislikesQt);

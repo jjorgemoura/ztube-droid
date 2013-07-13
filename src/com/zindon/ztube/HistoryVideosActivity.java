@@ -17,8 +17,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
+
 import com.zindon.ztube.application.YTApplication;
 import com.zindon.ztube.domain.YTVideo;
 import com.zindon.ztube.domain.adapters.VideosListBaseAdapter;
@@ -29,9 +28,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	// ----------------------VARS---------------------
 	protected static final String TAG = "History Videos Activity";
 	
-	protected Context context; 
+	protected Context mContext; 
 	
-	private List<YTVideo> theItems = null;
+	private List<YTVideo> mTheItems = null;
 	 		
 	
 	// ----------------------CONSTRUCTORS---------------------
@@ -50,16 +49,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_videohistory);
 			
-		context = getApplicationContext(); 
+		mContext = getApplicationContext(); 
 			
-		Log.d(TAG, "History Videos: Create");
-		
-		
-		//Intent intent = getIntent();
-		//YTApplication ytApp = (YTApplication)getApplication();
-		
-		
-		
+		//Log.d(TAG, "History Videos: Create");
 		
 		
 		//List View
@@ -67,12 +59,12 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		
 		//String[] splitArray = historyContent.split(";");
 		
-		theItems = YTVideo.findByVideoHistory(historyContent, this);
+		mTheItems = YTVideo.findByVideoHistory(historyContent, this);
 		
 		
 		
 		//Instantiate the Base Adapter
-		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -98,46 +90,42 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	protected void onStart() {
 		
 		super.onStart();
-		Log.d(TAG, "method: onStart");
-		
-		
-		
-		
+		//Log.d(TAG, "method: onStart");
 	}
     
 	@Override
     protected void onRestart() {
 		
 		super.onRestart();
-		Log.i(TAG, "method: onRestart");
+		//Log.i(TAG, "method: onRestart");
 	}
 
 	@Override
     protected void onResume() {
 		
 		super.onResume();
-		Log.i(TAG, "method: onResume");
+		//Log.i(TAG, "method: onResume");
 	}
 
 	@Override
     protected void onPause() {
 		
 		super.onPause();
-		Log.i(TAG, "method: onPause");
+		//Log.i(TAG, "method: onPause");
 	}
 
 	@Override
     protected void onStop() {
 		
 		super.onStop();
-		Log.i(TAG, "method: onStop");
+		//Log.i(TAG, "method: onStop");
 	}
 
 	@Override
     protected void onDestroy() {
 		
 		super.onDestroy();
-		Log.i(TAG, "method: onDestroy");
+		//Log.i(TAG, "method: onDestroy");
 	}
 	
 	
@@ -146,10 +134,9 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		
+		//Log.d(TAG, "POSITION: " + position);
 		
-		Log.d(TAG, "POSITION: " + position);
-		
-		if(position > theItems.size()) {
+		if(position > mTheItems.size()) {
 			
 			Log.d(TAG, "LOADING PRESSED...");
 			return;
@@ -161,7 +148,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		
 		//Start Activity
 		Intent intent = new Intent(context, VideoDetailActivity.class);
-		intent.putExtra(ytApp.videoKey(), theItems.get(position).videoIdentifier());
+		intent.putExtra(ytApp.videoKey(), mTheItems.get(position).videoIdentifier());
 		startActivity(intent);
 		
 	}
@@ -182,11 +169,11 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		
 
 		//adiciona aos j‡ existentes.
-		theItems.add(myResultVideo);
+		mTheItems.add(myResultVideo);
 		
 	
 		//Instantiate the Base Adapter
-		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -197,7 +184,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 	//Para o ASYNC
   	public void onAsyncRequestCompleted(String result) {
   		
-  		Log.d(TAG, "onAsyncRequestCompleted");
+  		//Log.d(TAG, "onAsyncRequestCompleted");
   		
   		YTVideo.buildVideo(result, this);	
   	}
@@ -210,7 +197,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 		String result = "";
 		
 		try {
-			File file = new File(context.getFilesDir(), fileName);
+			File file = new File(mContext.getFilesDir(), fileName);
 			
 			if(!file.isFile()) {
 				
@@ -228,7 +215,7 @@ public class HistoryVideosActivity extends Activity implements OnItemClickListen
 				
 			}
 			
-			Log.d(TAG, result);
+			//Log.d(TAG, result);
 			
 			inStream.close();
 		}

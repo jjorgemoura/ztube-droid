@@ -25,7 +25,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Settings Activity";
 	 	
-	protected Context context; 
+	protected Context mContext; 
 	
 	// ----------------------CONSTRUCTORS---------------------
 
@@ -51,7 +51,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		myButtonDelHistory.setOnClickListener(this);
 		
 		//to Static method
-		context = getApplicationContext(); 
+		mContext = getApplicationContext(); 
 	}
 
 	@Override
@@ -67,8 +67,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 			
-		Button btn = (Button)v;
-		String btnStr = (String)btn.getText();
+		//Button btn = (Button)v;
+		//String btnStr = (String)btn.getText();
 		
 		
 		String spText = "";
@@ -111,7 +111,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		CharSequence textSP = "SETTINGS : " + spText;
 		
-		Toast toast = Toast.makeText(context, textSP, Toast.LENGTH_SHORT); 
+		Toast toast = Toast.makeText(mContext, textSP, Toast.LENGTH_SHORT); 
 		toast.show();
 	}
 	
@@ -120,7 +120,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	public void saveDataOnSharedPrefs(String key, String value) {
 		
 		String spFilename = getString(R.string.sharedpreference_privatefile);
-		SharedPreferences mySharedPreferences = this.context.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
+		SharedPreferences mySharedPreferences = this.mContext.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
 		
 		Editor spEditor = mySharedPreferences.edit();
 		spEditor.putString(key, value);
@@ -134,7 +134,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		String spFilename = getString(R.string.sharedpreference_privatefile);
 		
 		//SharedPreferences myPreferences = this.getPreferences(Context.MODE_PRIVATE);
-		SharedPreferences mySharedPreferences = this.context.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
+		SharedPreferences mySharedPreferences = this.mContext.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
 		
 		result = mySharedPreferences.getString(key, "");
 		
@@ -145,7 +145,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		String spFilename = getString(R.string.sharedpreference_privatefile);
 		
-		SharedPreferences mySharedPreferences = this.context.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
+		SharedPreferences mySharedPreferences = this.mContext.getSharedPreferences(spFilename, Context.MODE_PRIVATE);
 		
 		Editor spEditor = mySharedPreferences.edit();
 		
@@ -160,7 +160,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	public void writeFileToInternalStorage(String fileName, String content) {
 		
 		try {
-			File file = new File(context.getFilesDir(), fileName);
+			File file = new File(mContext.getFilesDir(), fileName);
 			
 			if(file.exists()) {
 				
@@ -194,7 +194,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		String result = "";
 		
 		try {
-			File file = new File(context.getFilesDir(), fileName);
+			File file = new File(mContext.getFilesDir(), fileName);
 			
 			if(!file.isFile()) {
 				
@@ -234,7 +234,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 	public void deleteInternalFile(String fileName){
 	
-		if(context.deleteFile(fileName)) {
+		if(mContext.deleteFile(fileName)) {
 			
 			Log.d(TAG, "File deleted with success.");
 		} else {

@@ -1,9 +1,6 @@
 package com.zindon.ztube.utils;
 
-import android.os.Message;
-import android.os.SystemClock;
 
-import com.zindon.ztube.utils.interfaces.OnAppRequest;
 
 public class YouTubeApi {
 

@@ -25,8 +25,8 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Video List Activity";
 	
-	private List<YTVideo> theItems = null;
-	private String playlistIdentifier = null;
+	private List<YTVideo> mTheItems = null;
+	private String mPlaylistIdentifier = null;
 	 		
 	
 	// ----------------------CONSTRUCTORS---------------------
@@ -52,16 +52,16 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		Intent intent = getIntent();
 		YTApplication ytApp = (YTApplication)getApplication();
 		
-		this.playlistIdentifier = intent.getStringExtra(ytApp.playlistKey());
+		this.mPlaylistIdentifier = intent.getStringExtra(ytApp.playlistKey());
 		
 		
 		
 		//List View
-		theItems = YTVideo.findByPlaylistId(this.playlistIdentifier, this, ytApp.useDummyData());
+		mTheItems = YTVideo.findByPlaylistId(this.mPlaylistIdentifier, this, ytApp.useDummyData());
 		
 		
 		//Instantiate the Base Adapter
-		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -82,6 +82,10 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		//UpNavigation
+		//this.getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		return true;
 	}
 
@@ -92,10 +96,6 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		
 		super.onStart();
 		Log.d(TAG, "method: onStart");
-		
-		
-		
-		
 	}
     
 	@Override
@@ -110,6 +110,31 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		
 		super.onResume();
 		Log.i(TAG, "method: onResume");
+		
+		if(this.mPlaylistIdentifier == null) {
+			
+			Log.d(TAG, "PlaylistIdentifier esta a NULL");
+		}
+		else{
+			
+			Log.d(TAG, "PlaylistIdentifier esta a OK");
+		}
+		
+		if(this.mTheItems == null) {
+			
+			Log.d(TAG, "the Items List esta a NULL");
+		}
+		else{
+			
+			if(this.mTheItems.size() == 0) {
+				
+				Log.d(TAG, "the Items List esta a VAZIA");
+			}
+			else {
+				
+				Log.d(TAG, "the Items List esta a OK");
+			}
+		}
 	}
 
 	@Override
@@ -140,9 +165,9 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		
 		
-		Log.d(TAG, "POSITION: " + position);
+//		Log.d(TAG, "POSITION: " + position);
 		
-		if(position > theItems.size()) {
+		if(position > mTheItems.size()) {
 			
 			Log.d(TAG, "LOADING PRESSED...");
 			return;
@@ -157,9 +182,9 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		
 		//Start Activity
 		Intent intent = new Intent(context, VideoDetailActivity.class);
-		intent.putExtra(ytApp.videoKey(), theItems.get(position).videoIdentifier());
+		intent.putExtra(ytApp.videoKey(), mTheItems.get(position).videoIdentifier());
+		//intent.putExtra(ytApp.playlistKey(),this.mPlaylistIdentifier);
 		startActivity(intent);
-		
 	}
 	
 	
@@ -172,12 +197,12 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 		
 		if(result instanceof List) {
 			
-			theItems = (List<YTVideo>)result; 
-			Log.d(TAG, "List Size: " + theItems.size());
+			mTheItems = (List<YTVideo>)result; 
+//			Log.d(TAG, "List Size: " + theItems.size());
 		}
 			
 		//Instantiate the Base Adapter
-		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, theItems);
+		VideosListBaseAdapter videosBaseAdapter = new VideosListBaseAdapter(this, mTheItems);
 
 		
 		//Setup The ListView
@@ -188,7 +213,7 @@ public class VideoListActivity extends Activity implements OnItemClickListener, 
 	//Para o ASYNC
   	public void onAsyncRequestCompleted(String result) {
   		
-  		Log.d(TAG, "onAsyncRequestCompleted");
+//  		Log.d(TAG, "onAsyncRequestCompleted");
   		
   		//CharSequence text = "CALL BACK Async EVENT: " + result;
   		

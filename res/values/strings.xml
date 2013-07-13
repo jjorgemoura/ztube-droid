@@ -23,6 +23,10 @@
     <string name="sharedpreference_privatefile">com.zindon.ztube.sharedprefprivatefile</string>
     <string name="datafile_privatefile">ztube_history_datafile</string>
     
+    <string name="like_image">likes</string>
+    <string name="dislike_image">dislikes</string>
+    
+    
     
     
 </resources>

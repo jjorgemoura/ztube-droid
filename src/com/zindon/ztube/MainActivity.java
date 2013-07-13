@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		
 		
-		Log.d(TAG, "Start SPLASH");
+		//Log.d(TAG, "Start SPLASH");
 		startActivity(new Intent(this, SplashActivity.class));
 		
 		
@@ -70,9 +70,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onStart() {
 		
 		super.onStart();
-		Log.d(TAG, "method: onStart");
-		
-		
+		//Log.d(TAG, "method: onStart");
 		
 	}
     
@@ -80,7 +78,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onRestart() {
 		
 		super.onRestart();
-		Log.i(TAG, "method: onRestart");
+//		Log.i(TAG, "method: onRestart");
 		
 //		Log.d(TAG, "Start SPLASH");
 //		startActivity(new Intent(this, SplashActivity.class));
@@ -91,7 +89,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onResume() {
 		
 		super.onResume();
-		Log.d(TAG, "method: onResume");
+//		Log.d(TAG, "method: onResume");
 		
 		boolean isNetConnected = NetworkConnectivity.isConnected(getApplicationContext());
 		
@@ -132,21 +130,21 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onPause() {
 		
 		super.onPause();
-		Log.i(TAG, "method: onPause");
+//		Log.i(TAG, "method: onPause");
 	}
 
 	@Override
     protected void onStop() {
 		
 		super.onStop();
-		Log.i(TAG, "method: onStop");
+//		Log.i(TAG, "method: onStop");
 	}
 
 	@Override
     protected void onDestroy() {
 		
 		super.onDestroy();
-		Log.i(TAG, "method: onDestroy");
+//		Log.i(TAG, "method: onDestroy");
 	}
 	
 	
@@ -178,7 +176,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			startActivity(new Intent(this, SettingsActivity.class));
 		}
-		
 	}
 
 	
@@ -190,9 +187,5 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 
 	// ----------------------GETTERS and SETTERS---------------------
-	
-	
-	
-	
 	
 }

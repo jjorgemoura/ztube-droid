@@ -50,17 +50,11 @@ public class YTAccount {
     	
     	
     	//store results in temp to allow pagination
-    	
-    	
-    	
     } 
     
     
 
     public void myPlaylists() {
-    	
-    	
-    	
     	
     }
     
@@ -74,7 +68,6 @@ public class YTAccount {
     	
     	
     	//return list
-    	
     }
 
 
@@ -95,8 +88,6 @@ public class YTAccount {
     private void lazyLoadHistoryVideos() {
         
         //from DB
-    	
-    	
     	
     }
 

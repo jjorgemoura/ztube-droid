@@ -7,9 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
 import com.zindon.ztube.domain.data.DummyDataFactory;
 import com.zindon.ztube.utils.RequestAsyncTask;
 import com.zindon.ztube.utils.YouTubeApi;
@@ -80,7 +77,7 @@ public class YTPlaylist {
     	}
     	
     	
-    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());
+//    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());
     	
     	return resultList;
     }
@@ -108,7 +105,7 @@ public class YTPlaylist {
 				String xSummary = eachEntry.getJSONObject("summary").getString("$t");
 	    		//String xSummary = "sdfsdfsdf s";
 	    		
-	    		Log.d(TAG, eachEntry.getString("published"));
+//	    		Log.d(TAG, eachEntry.getString("published"));
 	    		
 	    		JSONObject tmpCountHint = eachEntry.getJSONObject("yt$countHint");
 	    		int videoQuantity = tmpCountHint.getInt("$t");
@@ -153,8 +150,8 @@ public class YTPlaylist {
 		    		}
 		    		
 		    		
-		    		Log.d(TAG, thumbnail);
-		    		Log.d(TAG, thumbnailAlt);
+//		    		Log.d(TAG, thumbnail);
+//		    		Log.d(TAG, thumbnailAlt);
 	    		}
 	    		
 	    		xPlayList.setupPlaylist(xIdentifier, xTitle, xSummary, xUri);
@@ -168,7 +165,7 @@ public class YTPlaylist {
 	    		    	
 	    	
 	    	
-	    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());
+//	    	Log.d(TAG, "YTPlaylist: Size = " + resultList.size());
 	    	activity.onRequestCompleted(resultList);
     	
     	}

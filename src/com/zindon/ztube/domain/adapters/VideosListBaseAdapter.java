@@ -10,7 +10,6 @@ import com.zindon.ztube.domain.uidto.VideoDTO;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +22,17 @@ public class VideosListBaseAdapter extends BaseAdapter {
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Videos List BaseAdapter";
 	 
-	private List<YTVideo> theItems;
-	private LayoutInflater inflater;
+	private List<YTVideo> mTheItems;
+	private LayoutInflater mInflater;
 	
 	// ----------------------CONSTRUCTORS---------------------
 	public VideosListBaseAdapter(Activity activity, List<YTVideo>theItems) {
 		
-		Log.d(TAG, "INSTANCIATE StandardListBaseAdapter");
+//		Log.d(TAG, "INSTANCIATE StandardListBaseAdapter");
 		
 		//this.setupArrayString(itensQT);
-		this.theItems = theItems;
-		this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.mTheItems = theItems;
+		this.mInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 
@@ -45,21 +44,21 @@ public class VideosListBaseAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		
-		Log.d(TAG, "getCount> " + this.theItems.size());
-		return theItems.size();
+//		Log.d(TAG, "getCount> " + this.theItems.size());
+		return mTheItems.size();
 	}
 
 	@Override
 	public Object getItem(int index) {
 
-		Log.d(TAG, "getItem");
-		return theItems.get(index);
+//		Log.d(TAG, "getItem");
+		return mTheItems.get(index);
 	}
 
 	@Override
 	public long getItemId(int indexID) {
 		
-		Log.d(TAG, "getItemID");
+//		Log.d(TAG, "getItemID");
 		
 		//o index que vou utilizar e a posicao do array
 		return indexID;
@@ -70,14 +69,14 @@ public class VideosListBaseAdapter extends BaseAdapter {
 		
 		VideoDTO itemVideo;
 		
-		Log.d(TAG, "getVIew");
+//		Log.d(TAG, "getVIew");
 		
 		if(convertView == null) {
 			
 			itemVideo = new VideoDTO();
 			
 			//injeccao do layout (o schema do layout) no meu objecto PlaylistDTO
-			convertView = inflater.inflate(R.layout.lvitem_video, null);
+			convertView = mInflater.inflate(R.layout.lvitem_video, null);
 			
 			//Preset do meu objecto PlaylistDTO com os textos por defeito do schema do layout
 			itemVideo.setmVideoTitle((TextView)convertView.findViewById(R.id.textView_vd_title));
@@ -94,8 +93,8 @@ public class VideosListBaseAdapter extends BaseAdapter {
 		
 		
 		//Agora sim, meto os textos correctos
-		itemVideo.getmVideoTitle().setText(this.theItems.get(position).title());
-		itemVideo.getmVideoAuthor().setText(this.theItems.get(position).author());
+		itemVideo.getmVideoTitle().setText(this.mTheItems.get(position).title());
+		itemVideo.getmVideoAuthor().setText(this.mTheItems.get(position).author());
 		//itemPlaylist.getmPlaylistThumbnail();
 		
 		
@@ -103,7 +102,7 @@ public class VideosListBaseAdapter extends BaseAdapter {
  		DisplayImageOptions options = new DisplayImageOptions.Builder()
  			.build();
  		
- 		ImageLoader.getInstance().displayImage(theItems.get(position).videoThumbnail(), itemVideo.getmVideoThumbnail(), options);
+ 		ImageLoader.getInstance().displayImage(mTheItems.get(position).videoThumbnail(), itemVideo.getmVideoThumbnail(), options);
  		
 		return convertView;
 	}

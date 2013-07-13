@@ -2,8 +2,10 @@ package com.zindon.ztube;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
@@ -21,10 +23,11 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 
 	// ----------------------VARS---------------------
 	protected static final String TAG = "Video Detail Activity";
-			
+	
+	private String mPlaylistIdentifier = null;
 	private String mVideoIdentifier = null;
-	private YouTubePlayerView playerView;
-	private YouTubePlayer player;
+	private YouTubePlayerView mPlayerView;
+	private YouTubePlayer mPlayer;
 	
 	
 	// ----------------------CONSTRUCTORS---------------------
@@ -44,17 +47,19 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_videodetail);
 			
-		Log.d(TAG, "Video: Create");
+//		Log.d(TAG, "Video: Create");
 		
 		Intent intent = getIntent();
 		YTApplication ytApp = (YTApplication)getApplication();
 		
 		this.mVideoIdentifier = intent.getStringExtra(ytApp.videoKey());
+		//this.mPlaylistIdentifier = intent.getStringExtra(ytApp.playlistKey());
+		
+		Log.d(TAG, "VIDEO IDENTIFIER" + mVideoIdentifier);
 		
 		
 		
 		YTVideo theVideo = YTVideo.findByIdentifier(this.mVideoIdentifier, this, ytApp.useDummyData());
-		
 	}
 
 	@Override
@@ -68,58 +73,76 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 	protected void onStart() {
 		
 		super.onStart();
-		Log.d(TAG, "method: onStart");
-	
+//		Log.d(TAG, "method: onStart");
 	}
     
 	@Override
     protected void onRestart() {
 		
 		super.onRestart();
-		Log.i(TAG, "method: onRestart");
+//		Log.i(TAG, "method: onRestart");
 	}
 
 	@Override
     protected void onResume() {
 		
 		super.onResume();
-		Log.i(TAG, "method: onResume");
+//		Log.i(TAG, "method: onResume");
 	}
 
 	@Override
     protected void onPause() {
 		
 		super.onPause();
-		Log.i(TAG, "method: onPause");
+//		Log.i(TAG, "method: onPause");
 	}
 
 	@Override
     protected void onStop() {
 		
 		super.onStop();
-		Log.i(TAG, "method: onStop");
+//		Log.i(TAG, "method: onStop");
 	}
 
 	@Override
     protected void onDestroy() {
 		
 		super.onDestroy();
-		Log.i(TAG, "method: onDestroy");
+//		Log.i(TAG, "method: onDestroy");
 	}
 	
 	
 	
 	
+	
+	//---------------------
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//	    
+//		Log.d(TAG, "onOptionsItemSelected: itemID: " + item.getItemId());
+//		
+//		switch (item.getItemId()) {
+//	    
+//	    case android.R.id.home:
+//	        
+//	    	NavUtils.navigateUpFromSameTask(this);
+//	        Log.d(TAG, "onOptionsItemSelected: R HOME");
+//	        return true;
+//	    }
+//	    return super.onOptionsItemSelected(item);
+//	}
+	
+	
 	@Override
 	public void onInitializationFailure(Provider provider, YouTubeInitializationResult result) {
-		Log.d(TAG, result.toString());
+//		Log.d(TAG, result.toString());
 	}
 
 	@Override
 	public void onInitializationSuccess(Provider provider, YouTubePlayer vPlayer, boolean wasRestored) {
 		
-		this.player = vPlayer;
-		this.player.cueVideo(this.mVideoIdentifier);
+		this.mPlayer = vPlayer;
+		this.mPlayer.cueVideo(this.mVideoIdentifier);
 		//this.player.
 	}
 	
@@ -139,8 +162,8 @@ public class VideoDetailActivity extends YouTubeBaseActivity implements YouTubeP
 		
  		YTApplication ytApp = (YTApplication)getApplication();
  		
-		playerView = (YouTubePlayerView) findViewById(R.id.youtubeplayer);
-		playerView.initialize(ytApp.developerKey(), this);
+		mPlayerView = (YouTubePlayerView) findViewById(R.id.youtubeplayer);
+		mPlayerView.initialize(ytApp.developerKey(), this);
 		
 		
 		if(YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(getApplicationContext()).equals(YouTubeInitializationResult.SUCCESS)) {
