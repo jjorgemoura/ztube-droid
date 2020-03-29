@@ -4,7 +4,10 @@ ztube-droid
 Youtube Player for Android
 
 
+Este projecto foi o trabalho final do curso de Android efectuado em 2013 no ISGaya.
+
 Trabalho do grupo 14
+
 Elementos: Jorge Moura
 
 
@@ -12,39 +15,39 @@ Objectivos conseguidos
 - Listview de playlists por utilizador
 - Listview de videos por playlist selecionada
 - Details de videos
-- Visualização de videos
+- Visualiza¬ç‚Äπo de videos
 - Capacidade de pesquisar playlists de diversos users
-- Utilização de Async Calls na chamada da API do Youtube
-- Utilização da framework Universal Image Loader para a gestão das imagens de thumbnails (suporte para mecanismos de cache e async task).
-- Definição de objectos de dominío que modelam o meu universo.
-- Suporte total para utilização de dados dummy através da mudança de um parametro na class YTApplication
-- Utilização de BaseAdapters para alimentar as ListViews.
-- SplashScreen (duração pode ser ajustada na variável final estática na class SplashActivity)
-- Javadoc (ok, ainda muito básico)
+- Utiliza¬ç‚Äπo de Async Calls na chamada da API do Youtube
+- Utiliza¬ç‚Äπo da framework Universal Image Loader para a gest‚Äπo das imagens de thumbnails (suporte para mecanismos de cache e async task).
+- Defini¬ç‚Äπo de objectos de domin‚Äôo que modelam o meu universo.
+- Suporte total para utiliza¬ç‚Äπo de dados dummy atrav≈Ωs da mudan¬ça de um parametro na class YTApplication
+- Utiliza¬ç‚Äπo de BaseAdapters para alimentar as ListViews.
+- SplashScreen (dura¬ç‚Äπo pode ser ajustada na vari‚Ä°vel final est‚Ä°tica na class SplashActivity)
+- Javadoc (ok, ainda muito b‚Ä°sico)
 - Google Code Conventions (praticamente a 100%)
 
 
 
 Melhorias a efectuar
 - UI, nomeadamente melhorar cores, tamanhos de letras, etc.
-- No detalhe de videos, meter o logo do user que é o proprietário do video que estamos a visualizar.
+- No detalhe de videos, meter o logo do user que √© o propriet√°rio do video que estamos a visualizar.
 - Meter um footer de loading nas listviews
-- Paginação de playlists ou videos nas listviews, quando estas forem muito grandes.
-- Meter Nav Up (não consegui ainda um funcionamento a 100%)
-- Melhorar página e opções de settings.
+- Pagina√ß√£o de playlists ou videos nas listviews, quando estas forem muito grandes.
+- Meter Nav Up (n‚Äπo consegui ainda um funcionamento a 100%)
+- Melhorar p‚Ä°gina e op√ß√µes de settings.
 - Melhorar suporte para Landscape.
 - Melhorar suporte no devide (apenas testado no emulador)
-- Internacionalização da aplicação
-- O histórico é estático, vermos videos não altera a ordem do video no histórico.
-- Falta uma opção de search para pesquisar por videos a partir de uma string e visualizar os resultados da pesquisa numa listview.
+- Internacionaliza√ß√£o da aplica√ß√£o
+- O hist√≥rico √© est√°tico, vermos videos n‚Äπo altera a ordem do video no hist√≥rico.
+- Falta uma op√ß√£o de search para pesquisar por videos a partir de uma string e visualizar os resultados da pesquisa numa listview.
 - Melhoria da Action Bar.
 
 
 
-Modo de utilização
-- Para aceder ao histórico, ir a settings e clicar no botão para adicinar "dummy data" ao Histórico.
-- Adicionar userID na página do Settings. Por defeito deve estar a usar o userID "condorouro"
-- Como o video é executado no Youtube Player, o emulador ou o Device deverão ter instalados a App oficial do YouTube.
+Modo de utiliza√ß√£o
+- Para aceder ao hist‚Äîrico, ir a settings e clicar no bot‚Äπo para adicinar "dummy data" ao Hist√≥rico.
+- Adicionar userID na p‚Ä°gina do Settings. Por defeito deve estar a usar o userID "condorouro"
+- Como o video √© executado no Youtube Player, o emulador ou o Device dever√£o ter instalados a App oficial do YouTube.
 - 
 
 
